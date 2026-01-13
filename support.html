@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Our Mission - Archie & Bert</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Support Page Custom Styles */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 100%);
+            padding: 120px 0 60px;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .support-options {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .support-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary-orange);
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .support-card.primary {
+            border-top-color: var(--accent-red);
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
+        }
+
+        .support-card h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-card.primary h3 {
+            color: var(--accent-red);
+        }
+
+        .support-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .impact-tracker {
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-light);
+        }
+
+        .impact-tracker h2 {
+            font-family: var(--font-heading);
+            color: var(--primary-orange);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--dark-charcoal);
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .support-card {
+                padding: 2rem;
+            }
+
+            .impact-tracker {
+                padding: 2rem;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Prevent horizontal overflow */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .container {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Placeholder -->
+    <div id="banner-placeholder"></div>
+    
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Support Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Support Our Mission</h1>
+            <p class="page-subtitle">Help us create more adventures and make a positive impact</p>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="support-options">
+        <div class="container">
+            <div class="support-grid">
+                <div class="support-card primary">
+                    <h3>Buy Our Books</h3>
+                    <p>The best way to support us is by purchasing our books. Every sale directly funds new adventures and our charitable initiatives.</p>
+                    <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary">Shop on Amazon</a>
+                </div>
+                
+                <div class="support-card">
+                    <h3>Share Our Story</h3>
+                    <p>Help us reach more families by sharing our books with friends, family, and on social media.</p>
+                    <button class="btn btn-outline" onclick="shareWebsite()">Share Website</button>
+                </div>
+                
+                <div class="support-card">
+                    <h3>Direct Donation</h3>
+                    <p>Make a direct contribution to support literacy programs and wildlife conservation efforts.</p>
+                    <button class="btn btn-outline">Coming Soon</button>
+                </div>
+            </div>
+            
+            <div class="impact-tracker">
+                <h2>Our Impact So Far</h2>
+                <div class="impact-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Books Sold</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">£250+</div>
+                        <div class="stat-label">Donated to Literacy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">£150+</div>
+                        <div class="stat-label">Wildlife Conservation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

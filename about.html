@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Archie & Bert</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* About Page Custom Styles */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 100%);
+            padding: 120px 0 60px;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-main {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-story {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .about-story h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 2rem;
+        }
+
+        .about-story p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
+            padding: 4rem 0;
+            border-radius: var(--border-radius);
+            margin-top: 4rem;
+        }
+
+        .impact-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-orange);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .impact-card h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-story {
+                margin-bottom: 3rem;
+            }
+
+            .impact-section {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .impact-card {
+                padding: 2rem;
+            }
+
+            .impact-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Prevent horizontal overflow */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .container {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Placeholder -->
+    <div id="banner-placeholder"></div>
+    
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- About Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">About Our Mission</h1>
+            <p class="page-subtitle">Creating stories that matter, one adventure at a time</p>
+        </div>
+    </section>
+
+    <!-- Main About Content -->
+    <section class="about-main">
+        <div class="container">
+            <div class="about-story">
+                <h2>Our Story</h2>
+                <p>
+                    Archie & Bert Adventures was born from a simple belief: every child deserves stories that 
+                    not only entertain but also inspire, educate, and build character. Our journey began with 
+                    the creation of two lovable characters who would become ambassadors for friendship, courage, 
+                    and the wonders of the natural world.
+                </p>
+                <p>
+                    Set against the beautiful backdrop of the African savanna, our stories celebrate diversity, 
+                    friendship, and the importance of working together to overcome challenges. Through Archie's 
+                    adventurous spirit and Bert's gentle wisdom, young readers learn valuable life lessons 
+                    while being transported to a world of wonder and excitement.
+                </p>
+            </div>
+
+            <div class="impact-section">
+                <h2>Making a Difference</h2>
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">📚</div>
+                        <h3>Literacy Programs</h3>
+                        <p>25% of our profits support reading programs in underserved communities, helping ensure every child has access to quality books and literacy resources.</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">🌍</div>
+                        <h3>Wildlife Conservation</h3>
+                        <p>15% of our profits go directly to African wildlife conservation efforts, protecting the real-life habitats that inspire our stories.</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">🎨</div>
+                        <h3>Arts Education</h3>
+                        <p>10% supports arts and creative writing programs, fostering the next generation of storytellers and artists.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
