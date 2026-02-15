@@ -17,14 +17,29 @@
             color: white;
             text-align: center;
             overflow: hidden;
+            transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .books-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
         }
 
         .books-hero h1 {
             font-family: var(--font-heading);
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .books-hero p {
@@ -32,100 +47,122 @@
             opacity: 0.95;
             max-width: 600px;
             margin: 0 auto;
-        }
-
-        .current-book {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .book1-section {
-            background: linear-gradient(135deg, #FFF8DC 0%, #FFFFFF 100%);
-            padding: 4rem 0;
-            margin-bottom: 2rem;
-        }
-
-        .book2-section {
-            background: linear-gradient(135deg, #F0F8FF 0%, #FFFFFF 100%);
-            padding: 4rem 0;
-        }
-
-        .book-spotlight {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .book-spotlight-reverse {
-            grid-template-columns: 1.5fr 1fr;
-        }
-
-        .book-cover-main {
             position: relative;
-            text-align: center;
-            overflow: hidden;
+            z-index: 1;
         }
 
-        .book-cover-main img {
+        /* Books Grid */
+        .books-grid {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
+        }
+
+        .books-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .book-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 3rem;
+            padding: 3rem;
+            align-items: center;
+        }
+
+        .book-card:nth-child(even) .book-content {
+            grid-template-columns: 1fr 350px;
+        }
+
+        .book-card:nth-child(even) .book-cover {
+            order: 2;
+        }
+
+        .book-cover {
+            position: relative;
+        }
+
+        .book-cover img {
             width: 100%;
-            max-width: 350px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-heavy);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
         }
 
-        .book-cover-main:hover img {
-            transform: scale(1.05);
+        .book-card:hover .book-cover img {
+            transform: scale(1.03);
         }
 
-        .book-info h2 {
+        .book-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, var(--accent-red), #FF6B6B);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             font-family: var(--font-heading);
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
+        }
+
+        .book-details h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3vw, 2.5rem);
             color: var(--primary-orange);
             margin-bottom: 0.5rem;
+            font-weight: 800;
         }
 
-        .book-subtitle {
+        .book-number {
             color: var(--warm-gold);
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 1.5rem;
+            display: block;
         }
 
-        .book-description {
+        .book-details p {
             font-size: 1.1rem;
             line-height: 1.7;
             color: #555;
             margin-bottom: 2rem;
         }
 
-        .book-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+        .book-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
-        .highlight-item {
-            display: flex;
+        .feature-badge {
+            background: var(--soft-cream);
+            color: var(--primary-orange);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 2px solid var(--primary-orange);
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.8rem;
-            background: var(--soft-cream);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary-orange);
-        }
-
-        .highlight-icon {
-            font-size: 1.5rem;
-        }
-
-        .highlight-text {
-            font-weight: 500;
-            color: var(--dark-charcoal);
         }
 
         .book-actions {
@@ -134,123 +171,33 @@
             flex-wrap: wrap;
         }
 
-        .future-books {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
-        }
-
-        .future-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .future-book {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .future-book:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .future-book::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--warm-gold));
-        }
-
-        .future-cover {
-            width: 200px;
-            height: 260px;
-            margin: 0 auto 1.5rem;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            text-align: center;
-            box-shadow: var(--shadow-medium);
-            position: relative;
-        }
-
-        .future-cover.book2 {
-            background: linear-gradient(135deg, var(--warm-gold), #B8860B);
-        }
-
-        .future-cover.book3 {
-            background: linear-gradient(135deg, var(--deep-orange), #A0522D);
-        }
-
-        .future-cover.collection {
-            background: linear-gradient(135deg, var(--primary-orange), var(--warm-gold));
-        }
-
-        .future-book h3 {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .future-subtitle {
-            color: var(--warm-gold);
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .future-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .development-status {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .status-tag {
-            background: var(--soft-cream);
-            color: var(--primary-orange);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 2px solid var(--primary-orange);
-        }
-
-        .series-overview {
+        /* Series Info */
+        .series-info {
             padding: 80px 0;
             background: white;
         }
 
-        .overview-content {
-            max-width: 800px;
+        .series-content {
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
+            padding: 0 2rem;
         }
 
-        .overview-text {
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary-orange), var(--warm-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .series-description {
             font-size: 1.2rem;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #555;
             margin-bottom: 3rem;
         }
@@ -262,73 +209,63 @@
             margin-bottom: 3rem;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--soft-cream);
-            border-radius: var(--border-radius);
+        .stat-card {
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .stat-number {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-orange);
-            font-weight: 700;
+            font-weight: 800;
             display: block;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
             color: var(--dark-charcoal);
-            font-weight: 500;
-            margin-top: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .book-spotlight,
-            .book-spotlight-reverse {
+        @media (max-width: 968px) {
+            .book-content,
+            .book-card:nth-child(even) .book-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                padding: 2rem;
+            }
+
+            .book-card:nth-child(even) .book-cover {
+                order: 0;
+            }
+
+            .book-cover {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .book-details {
                 text-align: center;
             }
 
-            .future-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .book-highlights {
-                grid-template-columns: 1fr;
+            .book-features {
+                justify-content: center;
             }
 
             .book-actions {
                 justify-content: center;
             }
-
-            .series-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 480px) {
-            .future-cover {
-                width: 150px;
-                height: 200px;
-                font-size: 1rem;
-            }
-
             .series-stats {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Prevent horizontal overflow */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .container {
-            overflow-x: hidden;
         }
     </style>
 </head>
@@ -342,140 +279,121 @@
     <!-- Books Hero -->
     <section class="books-hero">
         <div class="container">
-            <h1>Adventure Library</h1>
-            <p>Discover the magical world of Archie & Bert through our collection of heartwarming adventures</p>
+            <h1>Our Book Collection</h1>
+            <p>Discover heartwarming adventures that teach friendship, courage, and the wonders of nature</p>
         </div>
     </section>
 
-    <!-- Available Books -->
-    <section class="current-book">
-        <div class="container">
+    <!-- Books Grid -->
+    <section class="books-grid">
+        <div class="books-container">
             <!-- Book 1 -->
-            <div class="book1-section">
-                <div class="book-spotlight">
-                    <div class="book-cover-main">
-                        <img src="imgs/book1-cover.png" alt="Chaos on the Savanna" class="book-image">
+            <div class="book-card">
+                <div class="book-content">
+                    <div class="book-cover">
+                        <img src="imgs/book1-cover.png" alt="Chaos on the Savanna">
+                        <div class="book-badge">Book 1</div>
                     </div>
-                    
-                    <div class="book-info">
+                    <div class="book-details">
                         <h2>Chaos on the Savanna</h2>
-                        <p class="book-subtitle">Archie & Bert Adventures - Book 1</p>
-                        <p class="book-description">
-                            Join Archie the adventurous dog and Bert the wise hippo as they navigate the wild African savanna. 
-                            When chaos erupts in their peaceful home, our heroes must work together to restore harmony and 
-                            discover the true meaning of friendship.
-                        </p>
-                        
-                        <div class="book-highlights">
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-book"></i></span>
-                                <span class="highlight-text">32 Pages</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-palette"></i></span>
-                                <span class="highlight-text">Full Color</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-child"></i></span>
-                                <span class="highlight-text">Ages 3-8</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-star"></i></span>
-                                <span class="highlight-text">5★ Rating</span>
-                            </div>
+                        <span class="book-number">Archie & Bert Adventures - Book 1</span>
+                        <p>Join Archie the adventurous dog and Bert the wise hippo as they navigate the wild African savanna. When chaos erupts in their peaceful home, our heroes must work together to restore harmony and discover the true meaning of friendship.</p>
+                        <div class="book-features">
+                            <span class="feature-badge"><i class="fas fa-book"></i> 32 Pages</span>
+                            <span class="feature-badge"><i class="fas fa-palette"></i> Full Color</span>
+                            <span class="feature-badge"><i class="fas fa-child"></i> Ages 3-8</span>
+                            <span class="feature-badge"><i class="fas fa-star"></i> 5★ Rating</span>
                         </div>
-                        
                         <div class="book-actions">
                             <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary">
                                 <i class="fas fa-shopping-cart"></i> Buy on Amazon
                             </a>
-                            <button class="btn btn-outline" onclick="shareBook('chaos-savanna')">
-                                <i class="fas fa-share"></i> Share Book
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Book 2 -->
-            <div class="book2-section">
-                <div class="book-spotlight book-spotlight-reverse">
-                    <div class="book-info">
+            <div class="book-card">
+                <div class="book-content">
+                    <div class="book-cover">
+                        <img src="imgs/book2-cover.png" alt="The Safari Tourist Invasion">
+                        <div class="book-badge">Book 2</div>
+                    </div>
+                    <div class="book-details">
                         <h2>The Safari Tourist Invasion</h2>
-                        <p class="book-subtitle">Archie & Bert Adventures - Book 2</p>
-                        <p class="book-description">
-                            Get ready for the next thrilling adventure! When tourists flood the savanna for safari season, 
-                            Archie and Bert must navigate the chaos while protecting their home and friends. A heartwarming 
-                            tale about hospitality, understanding, and finding balance.
-                        </p>
-                        
-                        <div class="book-highlights">
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-bus"></i></span>
-                                <span class="highlight-text">Tourist Adventures</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-shield-alt"></i></span>
-                                <span class="highlight-text">Wildlife Protection</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-leaf"></i></span>
-                                <span class="highlight-text">Environmental Lessons</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon"><i class="fas fa-handshake"></i></span>
-                                <span class="highlight-text">New Friendships</span>
-                            </div>
+                        <span class="book-number">Archie & Bert Adventures - Book 2</span>
+                        <p>Get ready for the next thrilling adventure! When tourists flood the savanna for safari season, Archie and Bert must navigate the chaos while protecting their home and friends. A heartwarming tale about hospitality, understanding, and finding balance.</p>
+                        <div class="book-features">
+                            <span class="feature-badge"><i class="fas fa-bus"></i> Tourist Adventures</span>
+                            <span class="feature-badge"><i class="fas fa-shield-alt"></i> Wildlife Protection</span>
+                            <span class="feature-badge"><i class="fas fa-leaf"></i> Environmental Lessons</span>
+                            <span class="feature-badge"><i class="fas fa-handshake"></i> New Friendships</span>
                         </div>
-                        
                         <div class="book-actions">
                             <a href="https://www.amazon.co.uk/ARCHIE-BERT-SAFARI-TOURIST-INVASION/dp/B0GDWR7R9T" target="_blank" class="btn btn-primary">
                                 <i class="fas fa-shopping-cart"></i> Buy on Amazon
                             </a>
-                            <button class="btn btn-outline" onclick="shareBook('safari-tourist-invasion')">
-                                <i class="fas fa-share"></i> Share Book
-                            </button>
                         </div>
                     </div>
-                    
-                    <div class="book-cover-main">
-                        <img src="imgs/book2-cover.png" alt="The Safari Tourist Invasion" class="book-image">
+                </div>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="book-card">
+                <div class="book-content">
+                    <div class="book-cover">
+                        <img src="https://m.media-amazon.com/images/I/71FdknINgtL._SY466_.jpg" alt="The Meeting - The Hippocampus">
+                        <div class="book-badge">Book 3</div>
+                    </div>
+                    <div class="book-details">
+                        <h2>The Meeting - The Hippocampus</h2>
+                        <span class="book-number">Archie & Bert Adventures - Book 3</span>
+                        <p>The river is changing, and this time Archie and Bert can't ignore it. When Bert announces a journey to the mysterious Hippocampus—a rare gathering where animals meet to discuss the fate of their world—the adventure becomes something far more serious. A warm, wise, and quietly powerful story about belonging, conservation, and the strength found in unlikely friendships.</p>
+                        <div class="book-features">
+                            <span class="feature-badge"><i class="fas fa-leaf"></i> Conservation</span>
+                            <span class="feature-badge"><i class="fas fa-users"></i> Unity</span>
+                            <span class="feature-badge"><i class="fas fa-heart"></i> Courage</span>
+                            <span class="feature-badge"><i class="fas fa-globe"></i> Environmental</span>
+                        </div>
+                        <div class="book-actions">
+                            <a href="https://amazon.com/ARCHIE-BERT-3-MEETING-HIPPOCAMPUS/dp/B0GMZFX73B" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> Buy on Amazon
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Series Overview -->
-    <section class="series-overview">
-        <div class="container">
+    <!-- Series Info -->
+    <section class="series-info">
+        <div class="series-content">
             <h2 class="section-title">About the Series</h2>
-            <div class="overview-content">
-                <p class="overview-text">
-                    The Archie & Bert Adventures series celebrates friendship, courage, and the wonders of the natural world. 
-                    Set against the beautiful backdrop of the African savanna, each story teaches valuable life lessons 
-                    while entertaining young readers with vibrant illustrations and engaging adventures.
-                </p>
-                
-                <div class="series-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Available Books</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">5★</span>
-                        <span class="stat-label">Average Rating</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Total Series</span>
-                    </div>
+            <p class="series-description">
+                The Archie & Bert Adventures series celebrates friendship, courage, and the wonders of the natural world. 
+                Set against the beautiful backdrop of the African savanna, each story teaches valuable life lessons 
+                while entertaining young readers with vibrant illustrations and engaging adventures.
+            </p>
+            
+            <div class="series-stats">
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Available Books</span>
                 </div>
-                
-                <div class="book-actions">
-                    <a href="characters.html" class="btn btn-primary">Meet the Characters</a>
-                    <a href="about.html" class="btn btn-outline">Our Mission</a>
+                <div class="stat-card">
+                    <span class="stat-number">5★</span>
+                    <span class="stat-label">Average Rating</span>
                 </div>
+                <div class="stat-card">
+                    <span class="stat-number">Many</span>
+                    <span class="stat-label">Happy Readers</span>
+                </div>
+            </div>
+            
+            <div class="book-actions">
+                <a href="characters.html" class="btn btn-primary">Meet the Characters</a>
             </div>
         </div>
     </section>

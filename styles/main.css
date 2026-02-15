@@ -104,21 +104,28 @@ body {
 .hamburger {
     display: none;
     flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
     cursor: pointer;
-    padding: 8px;
-    gap: 4px;
+    z-index: 1002;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .hamburger span {
-    width: 25px;
+    width: 100%;
     height: 3px;
     background: var(--primary-orange);
-    border-radius: 2px;
+    border-radius: 3px;
     transition: all 0.3s ease;
+    display: block;
+    transform-origin: center;
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: translateY(10.5px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -126,7 +133,7 @@ body {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-10.5px) rotate(-45deg);
 }
 
 .nav-logo h2 {
@@ -450,32 +457,107 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 80px;
-        flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        padding: 2rem 0;
-        z-index: 999;
-    }
-
+    /* Show hamburger */
     .hamburger {
         display: flex;
     }
 
-    .nav-menu.active {
+    /* Hide desktop menu by default */
+    .nav-menu {
+        position: fixed;
+        top: 80px !important;
         left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        max-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        z-index: 1001;
+        display: flex !important;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        border-top: 1px solid rgba(244, 164, 96, 0.1);
     }
 
+    /* Show menu when active */
+    .nav-menu.active {
+        max-height: calc(100vh - 80px);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border-bottom: 1px solid rgba(244, 164, 96, 0.08);
+        flex-shrink: 0;
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        text-align: left;
+        border-radius: 0;
+        transition: all 0.2s ease;
+        color: var(--dark-charcoal);
+        font-weight: 600;
+        font-size: 1.05rem;
+        position: relative;
+    }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background: linear-gradient(90deg, var(--primary-orange), var(--warm-gold));
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+        background: rgba(244, 164, 96, 0.05);
+        color: var(--primary-orange);
+        transform: none;
+        padding-left: 2.5rem;
+    }
+
+    .nav-link:hover::before {
+        width: 4px;
+    }
+
+    .nav-link:active {
+        background: linear-gradient(90deg, var(--primary-orange), var(--warm-gold));
+        color: white;
+    }
+
+    /* Override banner positioning - menu always stays at 80px */
     body.banner-shown .nav-menu {
-        top: 160px;
-        /* 80px banner + 80px navbar */
+        top: 80px !important;
+        height: calc(100vh - 80px);
+    }
+
+    body.banner-shown .nav-menu.active {
+        max-height: calc(100vh - 80px);
     }
 
     .hero-container {
@@ -1056,6 +1138,11 @@ body.banner-shown .page-hero {
     /* For other pages with page-hero class */
 }
 
+body.banner-shown .books-hero {
+    padding-top: 200px;
+    /* For books page */
+}
+
 /* Adjust navbar when banner is shown */
 body.banner-shown .navbar {
     top: 60px;
@@ -1073,72 +1160,94 @@ body.banner-shown .page-hero {
 /* Responsive updates */
 @media (max-width: 768px) {
     .book2-banner {
-        height: 80px;
+        height: auto;
+        min-height: 65px;
+        padding: 6px 0;
     }
 
     .banner-content {
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 8px 15px;
-        justify-content: center;
-        position: relative;
+        flex-direction: row;
+        gap: 6px;
+        padding: 0 8px;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .banner-text {
-        justify-content: center;
-        text-align: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin-bottom: 8px;
-    }
-
-    .banner-title {
-        font-size: 1rem;
-    }
-
-    .banner-subtitle {
-        font-size: 0.8rem;
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-start;
     }
 
     .banner-badge {
-        font-size: 0.7rem;
-        padding: 3px 8px;
+        font-size: 0.6rem;
+        padding: 2px 5px;
+        align-self: flex-start;
+        line-height: 1;
+    }
+
+    .banner-title {
+        font-size: 0.8rem;
+        white-space: normal;
+        line-height: 1.1;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .banner-subtitle {
+        font-size: 0.65rem;
+        white-space: nowrap;
+        line-height: 1;
     }
 
     .banner-actions {
-        position: absolute;
-        bottom: 8px;
-        right: 15px;
-        gap: 0.3rem;
+        display: flex;
+        gap: 3px;
+        flex-shrink: 0;
+        align-items: center;
     }
 
     .banner-btn {
-        font-size: 0.8rem;
-        padding: 6px 12px;
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        white-space: nowrap;
     }
 
     .banner-close {
-        display: none;
-        /* Hide X button on mobile */
+        padding: 3px;
+        font-size: 0.9rem;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     body.banner-shown .navbar {
-        top: 80px;
+        top: 65px;
     }
 
     body.banner-shown .hero {
-        padding-top: 240px;
-        /* Adjusted for mobile - 80px banner + 80px navbar + 80px spacing */
+        padding-top: 205px;
     }
 
     body.banner-shown .page-hero {
-        padding-top: 240px;
-        /* For other pages on mobile */
+        padding-top: 205px;
     }
 
-    body.banner-shown .nav-menu {
-        top: 160px;
-        /* 80px banner + 80px navbar */
+    body.banner-shown .books-hero {
+        padding-top: 205px;
+    }
+
+    body.banner-shown .nav-menu.active {
+        top: 145px;
     }
 
     .upcoming-adventures {
@@ -1159,5 +1268,25 @@ body.banner-shown .page-hero {
 
     .series-promise {
         padding: 2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .banner-title {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .banner-btn {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+    }
+
+    .banner-badge {
+        font-size: 0.55rem;
+    }
+
+    .banner-subtitle {
+        font-size: 0.6rem;
     }
 }

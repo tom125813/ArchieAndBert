@@ -21,14 +21,28 @@
             text-align: center;
             overflow: hidden;
             transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
         }
 
         .page-title {
             font-family: var(--font-heading);
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .page-subtitle {
@@ -36,8 +50,11 @@
             opacity: 0.95;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Main Characters Section */
         .main-characters {
             padding: 80px 0;
             background: white;
@@ -45,90 +62,128 @@
 
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 3rem;
             margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .character-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-lg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            border-top: 4px solid var(--primary-orange);
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFFFF 100%);
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 0;
         }
 
         .character-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
         }
 
         .character-image {
-            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-orange), var(--warm-gold));
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 250px;
+        }
+
+        .character-image::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            right: -20%;
+            bottom: -20%;
+            background-size: 150px;
+            background-position: 0 0;
+            background-repeat: repeat;
+            opacity: 0.2;
+            filter: blur(2px);
+        }
+
+        .character-card.archie .character-image::before {
+            background-image: url('imgs/characters/archie.png');
+        }
+
+        .character-card.bert .character-image::before {
+            background-image: url('imgs/characters/bert.png');
+        }
+
+        .character-card.bert .character-image {
+            background: linear-gradient(135deg, var(--warm-gold), var(--deep-orange));
         }
 
         .character-image img {
-            width: 200px;
-            height: 200px;
-            border-radius: 15px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            box-shadow: var(--shadow-md);
             transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .character-card:hover .character-image img {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .character-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .character-info h2 {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-orange);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            font-weight: 800;
         }
 
         .character-role {
             color: var(--warm-gold);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .character-description {
             color: #555;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
         }
 
         .character-traits {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            justify-content: center;
         }
 
         .trait {
-            background: var(--soft-cream);
+            background: white;
             color: var(--primary-orange);
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             border: 2px solid var(--primary-orange);
         }
 
-        /* Special styling for main characters */
-        .character-card.archie {
-            border-top-color: var(--primary-orange);
-        }
-
-        .character-card.bert {
-            border-top-color: var(--warm-gold);
-        }
-
+        /* All Characters Section */
         .all-characters {
             padding: 80px 0;
             background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
@@ -136,54 +191,106 @@
 
         .characters-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .character-showcase-card {
             background: white;
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .character-showcase-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .character-showcase-image {
-            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--soft-cream), #FFF);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-showcase-image::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            background-size: 100px;
+            background-position: 0 0;
+            background-repeat: repeat;
+            opacity: 0.15;
+            filter: blur(1px);
+        }
+
+        .character-showcase-card:nth-child(1) .character-showcase-image::before {
+            background-image: url('imgs/characters/ted.png');
+        }
+
+        .character-showcase-card:nth-child(2) .character-showcase-image::before {
+            background-image: url('imgs/characters/samson.png');
+        }
+
+        .character-showcase-card:nth-child(3) .character-showcase-image::before {
+            background-image: url('imgs/characters/zuzu.png');
+        }
+
+        .character-showcase-card:nth-child(4) .character-showcase-image::before {
+            background-image: url('imgs/characters/saffron.png');
+        }
+
+        .character-showcase-card:nth-child(5) .character-showcase-image::before {
+            background-image: url('imgs/characters/tama.png');
+        }
+
+        .character-showcase-card:nth-child(6) .character-showcase-image::before {
+            background-image: url('imgs/characters/wendyandpenny.png');
         }
 
         .character-showcase-image img {
-            width: 150px;
-            height: 150px;
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: var(--shadow-sm);
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center;
             transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
         }
 
         .character-showcase-card:hover .character-showcase-image img {
             transform: scale(1.1);
         }
 
+        .character-showcase-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
         .character-showcase-card h3 {
             font-family: var(--font-heading);
             color: var(--primary-orange);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 0.3rem;
+            font-weight: 700;
         }
 
         .character-showcase-card .character-role {
             color: var(--warm-gold);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             margin-bottom: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -196,18 +303,27 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .character-grid {
                 grid-template-columns: 1fr;
             }
 
-            .characters-showcase {
-                grid-template-columns: repeat(2, 1fr);
+            .character-card {
+                grid-template-columns: 1fr;
+            }
+
+            .character-image {
+                height: 250px;
             }
 
             .character-image img {
-                width: 150px;
-                height: 150px;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .characters-showcase {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -216,20 +332,9 @@
                 grid-template-columns: 1fr;
             }
 
-            .character-showcase-image img {
-                width: 120px;
-                height: 120px;
+            .character-showcase-image {
+                height: 180px;
             }
-        }
-
-        /* Prevent horizontal overflow */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .container {
-            overflow-x: hidden;
         }
     </style>
 </head>
@@ -312,10 +417,12 @@
                     <div class="character-showcase-image">
                         <img src="imgs/characters/ted.png" alt="Ted the Aardvark">
                     </div>
-                    <h3>Ted</h3>
-                    <p class="character-role">Aardvark</p>
-                    <p>A thoughtful and caring aardvark who always looks out for the wellbeing of others with his gentle
-                        nature.</p>
+                    <div class="character-showcase-info">
+                        <h3>Ted</h3>
+                        <p class="character-role">Aardvark</p>
+                        <p>A thoughtful and caring aardvark who always looks out for the wellbeing of others with his gentle
+                            nature.</p>
+                    </div>
                 </div>
 
                 <!-- Samson -->
@@ -323,10 +430,12 @@
                     <div class="character-showcase-image">
                         <img src="imgs/characters/samson.png" alt="Samson the Lion">
                     </div>
-                    <h3>Samson</h3>
-                    <p class="character-role">Lion</p>
-                    <p>Strong and dependable, Samson the lion is always ready to lend a helping hand to his friends with
-                        his brave heart.</p>
+                    <div class="character-showcase-info">
+                        <h3>Samson</h3>
+                        <p class="character-role">Lion</p>
+                        <p>Strong and dependable, Samson the lion is always ready to lend a helping hand to his friends with
+                            his brave heart.</p>
+                    </div>
                 </div>
 
                 <!-- Zuzu -->
@@ -334,10 +443,12 @@
                     <div class="character-showcase-image">
                         <img src="imgs/characters/zuzu.png" alt="Zuzu the Monkey">
                     </div>
-                    <h3>Zuzu</h3>
-                    <p class="character-role">Monkey</p>
-                    <p>A spirited and adventurous monkey who loves exploring new places, swinging through trees, and
-                        making friends.</p>
+                    <div class="character-showcase-info">
+                        <h3>Zuzu</h3>
+                        <p class="character-role">Monkey</p>
+                        <p>A spirited and adventurous monkey who loves exploring new places, swinging through trees, and
+                            making friends.</p>
+                    </div>
                 </div>
 
                 <!-- Saffron -->
@@ -345,10 +456,12 @@
                     <div class="character-showcase-image">
                         <img src="imgs/characters/saffron.png" alt="Saffron the Flamingo">
                     </div>
-                    <h3>Saffron</h3>
-                    <p class="character-role">Flamingo</p>
-                    <p>A graceful and elegant flamingo who brings beauty and wisdom to every adventure with her vibrant
-                        spirit.</p>
+                    <div class="character-showcase-info">
+                        <h3>Saffron</h3>
+                        <p class="character-role">Flamingo</p>
+                        <p>A graceful and elegant flamingo who brings beauty and wisdom to every adventure with her vibrant
+                            spirit.</p>
+                    </div>
                 </div>
 
                 <!-- Tama and Young Elephants -->
@@ -356,10 +469,12 @@
                     <div class="character-showcase-image">
                         <img src="imgs/characters/tama.png" alt="Tama and Young Elephants">
                     </div>
-                    <h3>Tama & Young Elephants</h3>
-                    <p class="character-role">Elephants</p>
-                    <p>Tama and two playful young elephants who love games and bringing joy to others with their gentle
-                        giant hearts.</p>
+                    <div class="character-showcase-info">
+                        <h3>Tama & Young Elephants</h3>
+                        <p class="character-role">Elephants</p>
+                        <p>Tama and two playful young elephants who love games and bringing joy to others with their gentle
+                            giant hearts.</p>
+                    </div>
                 </div>
 
                 <!-- Wendy and Penny -->
@@ -367,10 +482,12 @@
                     <div class="character-showcase-image">
                         <img src="imgs/characters/wendyandpenny.png" alt="Wendy and Penny the Giraffes">
                     </div>
-                    <h3>Wendy & Penny</h3>
-                    <p class="character-role">Giraffes</p>
-                    <p>An inseparable duo of giraffes who work together to solve problems and spread happiness from
-                        their tall perspective.</p>
+                    <div class="character-showcase-info">
+                        <h3>Wendy & Penny</h3>
+                        <p class="character-role">Giraffes</p>
+                        <p>An inseparable duo of giraffes who work together to solve problems and spread happiness from
+                            their tall perspective.</p>
+                    </div>
                 </div>
             </div>
         </div>
