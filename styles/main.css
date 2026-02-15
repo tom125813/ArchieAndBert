@@ -77,6 +77,19 @@ body {
     border-bottom: 1px solid rgba(244, 164, 96, 0.1);
 }
 
+/* Extend navbar background upward to cover gap during banner animation */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    z-index: -1;
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -560,10 +573,23 @@ body {
         max-height: calc(100vh - 80px);
     }
 
+    /* Hero adjustments for mobile - fit in viewport */
+    .hero {
+        padding: 90px 0 30px;
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+    }
+
+    body.banner-shown .hero {
+        padding-top: 150px;
+        min-height: calc(100vh - 140px);
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .hero-container .hero-image {
@@ -572,7 +598,170 @@ body {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .featured-book {
+        width: 200px;
+        max-width: 75vw;
+    }
+
+    /* Book carousel section - fit in viewport */
+    .book2-section {
+        padding: 50px 0 30px;
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+    }
+
+    body.banner-shown .book2-section {
+        padding-top: 90px;
+        min-height: calc(100vh - 140px);
+    }
+
+    .book2-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-md);
+        padding: 0 var(--space-md);
+    }
+
+    .book2-image {
+        order: -1;
+    }
+
+    .book2-showcase {
+        transform: rotate(0deg);
+    }
+
+    .book2-cover {
+        width: 240px;
+        height: auto;
+    }
+
+    .book-badge {
+        top: -10px;
+        right: -10px;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .book2-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .book2-content p {
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+        line-height: 1.5;
+    }
+
+    .book2-features {
+        gap: 0.4rem;
+        margin-bottom: var(--space-md);
+        justify-content: center;
+    }
+
+    .feature-tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .book2-buttons {
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: var(--space-sm);
+    }
+
+    .book2-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    .carousel-dots {
+        margin-top: 1rem;
+        gap: 0.6rem;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .carousel-dot.active {
+        width: 24px;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .carousel-arrow-left {
+        left: 0.5rem;
+    }
+
+    .carousel-arrow-right {
+        right: 0.5rem;
+    }
+
+    /* Adjust Book 3 placeholder for mobile */
+    .book2-showcase div[style*="width: 320px"] {
+        width: 240px !important;
+        height: 312px !important;
+        font-size: 1rem !important;
+        padding: 1rem !important;
+    }
+
+    .videos-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-md);
+    }
+
+    .characters-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-md);
+    }
+
+    .section-content h2 {
+        font-size: 2rem;
+        /* Smaller on mobile */
+    }
+
+    .section-content p {
+        font-size: 1rem;
+        /* Smaller on mobile */
+    }
+
+    .section-visual {
+        font-size: 5rem;
+        /* Bigger icons on mobile */
+        min-height: 200px;
+    }
+
+    .section-content {
+        min-height: auto;
+    }
+
+    .promise-features {
+        flex-direction: column;
+        align-items: center;
     }
 
     /* Videos section - move icon above text on mobile */
@@ -1015,11 +1204,23 @@ body {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: none;
     overflow: hidden;
+    will-change: transform;
 }
 
 .book2-banner.show {
     transform: translateY(0);
     box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+}
+
+/* Prevent animation on page load when banner should be shown instantly */
+body.banner-shown:not(.transitions-enabled) .book2-banner {
+    transform: translateY(0);
+    transition: none;
+}
+
+/* Re-enable transitions after initial load */
+body.banner-shown.transitions-enabled .book2-banner.show {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Adjust navbar when banner is shown */
@@ -1029,6 +1230,11 @@ body {
 
 body.banner-shown .navbar {
     top: 60px;
+}
+
+/* Prevent navbar animation on initial page load when banner is pre-shown */
+body.banner-shown:not(.transitions-enabled) .navbar {
+    transition: none;
 }
 
 .banner-content {
@@ -1155,6 +1361,13 @@ body.banner-shown .hero {
 
 body.banner-shown .page-hero {
     padding-top: 180px;
+}
+
+/* Prevent hero animation on initial page load when banner is pre-shown */
+body.banner-shown:not(.transitions-enabled) .hero,
+body.banner-shown:not(.transitions-enabled) .page-hero,
+body.banner-shown:not(.transitions-enabled) .books-hero {
+    transition: none;
 }
 
 /* Responsive updates */

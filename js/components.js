@@ -12,8 +12,8 @@ const navbarTemplate = `
             <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="books.html" class="nav-link">Books</a></li>
             <li><a href="characters.html" class="nav-link">Characters</a></li>
-            <li><a href="videos.html" class="nav-link">Videos</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
+            <!-- <li><a href="videos.html" class="nav-link">Videos</a></li> -->
+            <!--<li><a href="about.html" class="nav-link">About</a></li>-->
             <li><a href="support.html" class="nav-link">Support</a></li>
         </ul>
         <div class="hamburger">
@@ -26,23 +26,21 @@ const navbarTemplate = `
 `;
 
 const bannerTemplate = `
-<!-- Book 2 Banner -->
+<!-- Book 3 Banner -->
 <div id="book2-banner" class="book2-banner">
     <div class="banner-content">
         <div class="banner-text">
             <span class="banner-badge">OUT NOW!</span>
-            <span class="banner-title">Book 2: The Safari Tourist Invasion</span>
+            <span class="banner-title">Book 3: The Meeting - The Hippocampus</span>
             <span class="banner-subtitle">available on Amazon</span>
         </div>
-        <div class="banner-actions">
-            <a href="https://www.amazon.co.uk/ARCHIE-BERT-SAFARI-TOURIST-INVASION/dp/B0GDWR7R9T" target="_blank" class="banner-btn">
-                <i class="fas fa-shopping-cart"></i>
-                Buy Now
-            </a>
-            <button class="banner-close" onclick="closeBanner()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
+        <a href="https://amazon.com/ARCHIE-BERT-3-MEETING-HIPPOCAMPUS/dp/B0GMZFX73B" target="_blank" class="banner-btn">
+            <i class="fas fa-shopping-cart"></i>
+            Buy Now
+        </a>
+        <button class="banner-close" onclick="closeBanner()">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 </div>
 `;
@@ -68,32 +66,21 @@ const footerTemplate = `
                     <li><a href="index.html">Home</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="characters.html">Characters</a></li>
-                    <li><a href="videos.html">Videos</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul class="footer-links">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="support.html">Donate</a></li>
                     <li><a href="mailto:hello@archieandbert.com">Contact</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
                 </ul>
             </div>
             
-            <div class="footer-section">
-                <h4>Get the Book</h4>
-                <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary btn-small">
-                    Buy on Amazon
-                </a>
-                <p class="footer-note">Available in paperback and digital formats</p>
-            </div>
+    
         </div>
         
         <div class="footer-bottom">
             <p>&copy; 2026 Archie & Bert Adventures. All rights reserved.</p>
-            <p>Made with <i class="fas fa-heart" style="color: var(--accent-red);"></i> for young adventurers everywhere</p>
         </div>
     </div>
 </footer>
@@ -107,28 +94,65 @@ function loadComponent(elementId, template) {
     }
 }
 
-// Banner functionality
+// Banner functionality with smooth cross-page transitions
 let bannerDismissed = false;
+let bannerFullyShown = false;
 
 function isMobile() {
     return window.innerWidth <= 768;
 }
 
-function showBanner() {
+function showBanner(skipAnimation = false) {
     if (bannerDismissed) return;
     
     const banner = document.getElementById('book2-banner');
     if (banner) {
-        banner.classList.add('show');
-        document.body.classList.add('banner-shown');
+        if (skipAnimation) {
+            // Disable transition temporarily for instant show
+            banner.style.transition = 'none';
+            banner.classList.add('show');
+            document.body.classList.add('banner-shown');
+            bannerFullyShown = true;
+            // Store that banner is fully shown
+            sessionStorage.setItem('bannerFullyShown', 'true');
+            // Re-enable transition after a frame
+            requestAnimationFrame(() => {
+                banner.style.transition = '';
+            });
+        } else {
+            banner.classList.add('show');
+            document.body.classList.add('banner-shown');
+            // Mark as fully shown after animation completes (400ms transition)
+            setTimeout(() => {
+                bannerFullyShown = true;
+                sessionStorage.setItem('bannerFullyShown', 'true');
+            }, 400);
+        }
     }
 }
 
-function hideBanner() {
+function hideBanner(skipAnimation = false) {
     const banner = document.getElementById('book2-banner');
     if (banner) {
-        banner.classList.remove('show');
-        document.body.classList.remove('banner-shown');
+        if (skipAnimation) {
+            // Disable transition temporarily for instant hide
+            banner.style.transition = 'none';
+            banner.classList.remove('show');
+            document.body.classList.remove('banner-shown');
+            bannerFullyShown = false;
+            // Remove banner shown state
+            sessionStorage.removeItem('bannerFullyShown');
+            // Re-enable transition after a frame
+            requestAnimationFrame(() => {
+                banner.style.transition = '';
+            });
+        } else {
+            banner.classList.remove('show');
+            document.body.classList.remove('banner-shown');
+            bannerFullyShown = false;
+            // Remove banner shown state
+            sessionStorage.removeItem('bannerFullyShown');
+        }
     }
 }
 
@@ -136,8 +160,10 @@ function hideBanner() {
 window.closeBanner = function() {
     bannerDismissed = true;
     hideBanner();
-    // Store dismissal in localStorage
+    // Store dismissal in localStorage (persists across sessions)
     localStorage.setItem('bannerDismissed', 'true');
+    // Remove from sessionStorage
+    sessionStorage.removeItem('bannerFullyShown');
 }
 
 function handleScroll() {
@@ -170,8 +196,18 @@ function handleResize() {
 
 // Load all components when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if banner was previously dismissed
+    // Check if banner was previously dismissed (persists across sessions)
     bannerDismissed = localStorage.getItem('bannerDismissed') === 'true';
+    
+    // Check if banner was FULLY shown on previous page (only for current session)
+    const wasBannerFullyShown = sessionStorage.getItem('bannerFullyShown') === 'true';
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Pre-apply banner-shown class if needed BEFORE loading components to prevent layout shift
+    // Don't add transitions-enabled yet - that will prevent animations
+    if (scrollTop <= 50 && wasBannerFullyShown && !bannerDismissed) {
+        document.body.classList.add('banner-shown');
+    }
     
     // Load banner first (before navbar)
     loadComponent('banner-placeholder', bannerTemplate);
@@ -188,17 +224,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize mobile menu after navbar is loaded
     setTimeout(initializeMobileMenu, 100);
     
-    // Initialize banner scroll functionality
-    setTimeout(() => {
+    // Initialize banner immediately after components load
+    requestAnimationFrame(() => {
+        const banner = document.getElementById('book2-banner');
+        
+        // If banner should be shown instantly (was shown on previous page)
+        if (scrollTop <= 50 && wasBannerFullyShown && !bannerDismissed && banner) {
+            // Add show class immediately - CSS will prevent animation via body.banner-shown:not(.transitions-enabled)
+            banner.classList.add('show');
+            bannerFullyShown = true;
+            
+            // After rendering is complete, enable transitions for future interactions
+            requestAnimationFrame(() => {
+                document.body.classList.add('transitions-enabled');
+            });
+        } else {
+            // Normal behavior - enable transitions immediately and check scroll position
+            document.body.classList.add('transitions-enabled');
+            handleScroll();
+        }
+        
         // Add scroll listener
         window.addEventListener('scroll', handleScroll);
         
         // Add resize listener for mobile/desktop switching
         window.addEventListener('resize', handleResize);
-        
-        // Check initial scroll position
-        handleScroll();
-    }, 200);
+    });
 });
 
 // Set active navigation link

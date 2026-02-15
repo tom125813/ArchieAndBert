@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archie & Bert - Children's Adventure Books</title>
+    <title>Archie & Bert - Home</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,7 +118,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 140px 0 80px;
+            padding: 120px 0 70px;
             background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 50%, var(--deep-orange) 100%);
             color: white;
             position: relative;
@@ -150,7 +150,7 @@
 
         .hero-title {
             font-family: var(--font-heading);
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: var(--space-md);
@@ -158,7 +158,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: var(--space-xl);
             opacity: 0.95;
             font-weight: 500;
@@ -259,7 +259,7 @@
 
         /* Book 2 Section */
         .book2-section {
-            padding: 140px 0 80px;
+            padding: 120px 0 70px;
             background: linear-gradient(135deg, var(--deep-orange) 0%, var(--savanna-brown) 50%, var(--primary-orange) 100%);
             color: white;
             position: relative;
@@ -444,7 +444,7 @@
 
         .book2-content h2 {
             font-family: var(--font-heading);
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: var(--space-md);
@@ -452,7 +452,7 @@
         }
 
         .book2-content p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1.7;
             margin-bottom: var(--space-lg);
             opacity: 0.95;
@@ -699,10 +699,23 @@
         @media (max-width: 768px) {
             /* Mobile nav styles are in main.css */
             
+            /* Hero adjustments for mobile - fit in viewport */
+            .hero {
+                padding: 90px 0 30px;
+                min-height: calc(100vh - 80px);
+                display: flex;
+                align-items: center;
+            }
+
+            body.banner-shown .hero {
+                padding-top: 150px;
+                min-height: calc(100vh - 140px);
+            }
+            
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: var(--space-lg);
+                gap: 1.5rem;
             }
             
             .hero-container .hero-image {
@@ -710,12 +723,37 @@
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                line-height: 1.1;
+                margin-bottom: 0.75rem;
             }
 
-            /* Mobile-friendly carousel */
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .featured-book {
+                width: 200px;
+                max-width: 75vw;
+            }
+
+            /* Mobile-friendly carousel - fit in viewport */
             .book2-section {
-                padding: 60px 0 40px;
+                padding: 50px 0 30px;
+                min-height: calc(100vh - 80px);
+                display: flex;
+                align-items: center;
+            }
+
+            body.banner-shown .book2-section {
+                padding-top: 90px;
+                min-height: calc(100vh - 140px);
             }
             
             .book2-container {
@@ -870,49 +908,11 @@
 </head>
 
 <body>
-    <!-- Book 3 Banner -->
-    <div id="book2-banner" class="book2-banner">
-        <div class="banner-content">
-            <div class="banner-text">
-                <span class="banner-badge">OUT NOW!</span>
-                <span class="banner-title">Book 3: The Meeting - The Hippocampus</span>
-                <span class="banner-subtitle">available on Amazon</span>
-            </div>
-            <div class="banner-actions">
-                <a href="https://amazon.com/ARCHIE-BERT-3-MEETING-HIPPOCAMPUS/dp/B0GMZFX73B" target="_blank" class="banner-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    Buy Now
-                </a>
-                <button class="banner-close" onclick="closeBanner()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="imgs/text-logo.png" alt="Archie & Bert" class="logo-image">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="books.html" class="nav-link">Books</a></li>
-                <li><a href="characters.html" class="nav-link">Characters</a></li>
-                <!-- <li><a href="videos.html" class="nav-link">Videos</a></li> -->
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="support.html" class="nav-link">Support</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Banner Placeholder -->
+    <div id="banner-placeholder"></div>
+    
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1000,7 +1000,7 @@
                         </div>
                         <div class="book2-content">
                             <h2>The Meeting - The Hippocampus</h2>
-                            <p>The river is changing, and this time Archie and Bert can't ignore it. When Bert announces a journey to the mysterious Hippocampus—a rare gathering where animals meet to discuss the fate of their world—the adventure becomes something far more serious. A warm, wise, and quietly powerful story about belonging, conservation, and the strength found in unlikely friendships.</p>
+                            <p>When Bert announces a journey to the mysterious Hippocampus—a rare gathering where animals meet to discuss the fate of their world—Archie and Bert embark on their most important adventure yet.</p>
                             <div class="book2-features">
                                 <span class="feature-tag"><i class="fas fa-leaf"></i> Conservation</span>
                                 <span class="feature-tag"><i class="fas fa-users"></i> Unity</span>
@@ -1107,56 +1107,11 @@
     </section>
     -->
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Archie & Bert</h3>
-                    <p>Adventures that inspire friendship, courage, and wonder in young hearts around the world.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="books.html">Books</a></li>
-                        <li><a href="characters.html">Characters</a></li>
-                        <li><a href="videos.html">Videos</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="support.html">Donate</a></li>
-                        <li><a href="mailto:hello@archieandbert.com">Contact</a></li>
-                        <li><a href="privacy.html">Privacy</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Get the Book</h4>
-                    <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary btn-small">
-                        Buy on Amazon
-                    </a>
-                    <p class="footer-note">Available in paperback and digital formats</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Archie & Bert Adventures. All rights reserved.</p>
-                <p>Made with <i class="fas fa-heart" style="color: var(--accent-red);"></i> for young adventurers everywhere</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Carousel functionality
         let currentSlide = 0;
@@ -1235,187 +1190,7 @@
             }
         });
 
-        // Banner functionality
-        let bannerDismissed = false;
-        let bannerWasShown = false;
 
-        function isMobile() {
-            return window.innerWidth <= 768;
-        }
-
-        function showBanner(skipAnimation = false) {
-            if (bannerDismissed) return;
-            
-            const banner = document.getElementById('book2-banner');
-            if (banner) {
-                if (skipAnimation) {
-                    // Instantly show without animation
-                    banner.style.transition = 'none';
-                    banner.classList.add('show');
-                    document.body.classList.add('banner-shown');
-                    // Re-enable transitions after a frame
-                    requestAnimationFrame(() => {
-                        banner.style.transition = '';
-                    });
-                } else {
-                    banner.classList.add('show');
-                    document.body.classList.add('banner-shown');
-                }
-                bannerWasShown = true;
-                // Store that banner is currently shown
-                sessionStorage.setItem('bannerShown', 'true');
-            }
-        }
-
-        function hideBanner(skipAnimation = false) {
-            const banner = document.getElementById('book2-banner');
-            if (banner) {
-                if (skipAnimation) {
-                    banner.style.transition = 'none';
-                    banner.classList.remove('show');
-                    document.body.classList.remove('banner-shown');
-                    requestAnimationFrame(() => {
-                        banner.style.transition = '';
-                    });
-                } else {
-                    banner.classList.remove('show');
-                    document.body.classList.remove('banner-shown');
-                }
-                bannerWasShown = false;
-                // Remove from session storage
-                sessionStorage.removeItem('bannerShown');
-            }
-        }
-
-        function closeBanner() {
-            bannerDismissed = true;
-            hideBanner();
-            // Store dismissal in localStorage
-            localStorage.setItem('bannerDismissed', 'true');
-            // Remove from session storage
-            sessionStorage.removeItem('bannerShown');
-        }
-
-        function handleScroll() {
-            if (bannerDismissed) return;
-            
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Show banner when at the very top (within 50px)
-            if (scrollTop <= 50) {
-                showBanner();
-            } else {
-                hideBanner();
-            }
-        }
-
-        // Handle window resize to update mobile/desktop behavior
-        function handleResize() {
-            // Force recalculation of banner positioning on resize
-            const banner = document.getElementById('book2-banner');
-            if (banner && banner.classList.contains('show')) {
-                // Temporarily hide and show to trigger CSS recalculation
-                banner.classList.remove('show');
-                setTimeout(() => {
-                    if (!bannerDismissed && (window.pageYOffset || document.documentElement.scrollTop) <= 50) {
-                        banner.classList.add('show');
-                    }
-                }, 10);
-            }
-        }
-
-        // Initialize banner functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if banner was previously dismissed
-            bannerDismissed = localStorage.getItem('bannerDismissed') === 'true';
-            
-            // Check if banner was shown on previous page in this session
-            const wasBannerShown = sessionStorage.getItem('bannerShown') === 'true';
-            
-            // Check initial scroll position
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // If at top and banner was shown on previous page, show instantly without animation
-            if (scrollTop <= 50 && wasBannerShown && !bannerDismissed) {
-                // Disable transitions on hero and navbar
-                const hero = document.querySelector('.hero');
-                const navbar = document.querySelector('.navbar');
-                const banner = document.getElementById('book2-banner');
-                
-                if (hero) hero.style.transition = 'none';
-                if (navbar) navbar.style.transition = 'none';
-                
-                showBanner(true); // Skip animation
-                
-                // Re-enable transitions after a frame
-                requestAnimationFrame(() => {
-                    if (hero) hero.style.transition = '';
-                    if (navbar) navbar.style.transition = '';
-                });
-            } else {
-                handleScroll(); // Normal behavior with animation
-            }
-            
-            // Add scroll listener
-            window.addEventListener('scroll', handleScroll);
-            
-            // Add resize listener for mobile/desktop switching
-            window.addEventListener('resize', handleResize);
-        });
-
-        // Mobile Navigation - Completely Rewritten
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (!hamburger || !navMenu) {
-                console.error('Mobile nav elements not found');
-                return;
-            }
-
-            console.log('Mobile nav initialized');
-
-            // Toggle menu
-            hamburger.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const isActive = navMenu.classList.contains('active');
-                
-                if (isActive) {
-                    // Close menu
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    console.log('Menu closed');
-                } else {
-                    // Open menu
-                    hamburger.classList.add('active');
-                    navMenu.classList.add('active');
-                    console.log('Menu opened');
-                }
-            });
-
-            // Close menu when clicking a link
-            const navLinks = navMenu.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    console.log('Menu closed via link click');
-                });
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                    if (navMenu.classList.contains('active')) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        console.log('Menu closed via outside click');
-                    }
-                }
-            });
-        });
 
         // Simple smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

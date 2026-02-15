@@ -1,3 +1,95 @@
+// Banner functionality - works on all pages
+let bannerDismissed = false;
+let bannerWasShown = false;
+
+function showBanner(skipAnimation = false) {
+    if (bannerDismissed) return;
+    
+    const banner = document.getElementById('book2-banner');
+    if (banner) {
+        if (skipAnimation) {
+            banner.style.transition = 'none';
+            banner.classList.add('show');
+            document.body.classList.add('banner-shown');
+            requestAnimationFrame(() => {
+                banner.style.transition = '';
+            });
+        } else {
+            banner.classList.add('show');
+            document.body.classList.add('banner-shown');
+        }
+        bannerWasShown = true;
+        sessionStorage.setItem('bannerShown', 'true');
+    }
+}
+
+function hideBanner(skipAnimation = false) {
+    const banner = document.getElementById('book2-banner');
+    if (banner) {
+        if (skipAnimation) {
+            banner.style.transition = 'none';
+            banner.classList.remove('show');
+            document.body.classList.remove('banner-shown');
+            requestAnimationFrame(() => {
+                banner.style.transition = '';
+            });
+        } else {
+            banner.classList.remove('show');
+            document.body.classList.remove('banner-shown');
+        }
+        bannerWasShown = false;
+        sessionStorage.removeItem('bannerShown');
+    }
+}
+
+function closeBanner() {
+    bannerDismissed = true;
+    hideBanner();
+    localStorage.setItem('bannerDismissed', 'true');
+    sessionStorage.removeItem('bannerShown');
+}
+
+function handleBannerScroll() {
+    if (bannerDismissed) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop <= 50) {
+        showBanner();
+    } else {
+        hideBanner();
+    }
+}
+
+// Initialize banner on all pages
+document.addEventListener('DOMContentLoaded', function() {
+    bannerDismissed = localStorage.getItem('bannerDismissed') === 'true';
+    const wasBannerShown = sessionStorage.getItem('bannerShown') === 'true';
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop <= 50 && wasBannerShown && !bannerDismissed) {
+        const hero = document.querySelector('.hero, .page-hero, .books-hero');
+        const navbar = document.querySelector('.navbar');
+        
+        if (hero) hero.style.transition = 'none';
+        if (navbar) navbar.style.transition = 'none';
+        
+        showBanner(true);
+        
+        requestAnimationFrame(() => {
+            if (hero) hero.style.transition = '';
+            if (navbar) navbar.style.transition = '';
+        });
+    } else {
+        handleBannerScroll();
+    }
+    
+    window.addEventListener('scroll', handleBannerScroll);
+});
+
+// Make closeBanner available globally
+window.closeBanner = closeBanner;
+
 // Hamburger menu functionality - immediate initialization for hardcoded navbar
 console.log('Script loaded, initializing hamburger menu...');
 
