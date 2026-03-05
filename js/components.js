@@ -12,8 +12,7 @@ const navbarTemplate = `
             <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="books.html" class="nav-link">Books</a></li>
             <li><a href="characters.html" class="nav-link">Characters</a></li>
-            <!-- <li><a href="videos.html" class="nav-link">Videos</a></li> -->
-            <!--<li><a href="about.html" class="nav-link">About</a></li>-->
+            <li><a href="funschool.html" class="nav-link nav-link-funschool">Fun School <span class="nav-tag">Episodes</span></a></li>
             <li><a href="support.html" class="nav-link">Support</a></li>
         </ul>
         <div class="hamburger">
@@ -51,36 +50,34 @@ const footerTemplate = `
     <div class="container">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Archie & Bert</h3>
-                <p>Adventures that inspire friendship, courage, and wonder in young hearts around the world.</p>
+                <h3>Archie &amp; Bert</h3>
+                <p>Adventures that inspire friendship, courage, and wonder in young hearts. Every penny of book profit is donated to <strong style="color: var(--warm-gold);">Tormohun Rotary Club</strong>.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:hello@archieandbert.com" class="social-link" title="Email us"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="characters.html">Characters</a></li>
+                    <li><a href="funschool.html">Fun School</a></li>
+                    <li><a href="support.html">Support</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
-                <h4>Support</h4>
-                <ul class="footer-links">
-                    <li><a href="mailto:hello@archieandbert.com">Contact</a></li>
-                </ul>
+                <h4>Our Mission</h4>
+                <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.6;">Every penny of book profit is donated to <strong style="color: var(--warm-gold);">Tormohun Rotary Club</strong>, based in Torquay, Devon, UK — supporting people and animals in need.</p>
+                <a href="support.html" style="display: inline-block; margin-top: 0.5rem; color: var(--warm-gold); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Learn more &rarr;</a>
             </div>
-            
-    
         </div>
-        
+
         <div class="footer-bottom">
-            <p>&copy; 2026 Archie & Bert Adventures. All rights reserved.</p>
+            <p>&copy; 2026 Archie &amp; Bert Adventures. All rights reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 0.25rem;">Fun School content is completely free. No subscriptions. No hidden fees.</p>
         </div>
     </div>
 </footer>

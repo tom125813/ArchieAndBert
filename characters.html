@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Characters Page Custom Styles */
+        /* ── Characters Page ───────────────────────────────────────── */
+
         .page-hero {
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 100%);
-            padding: 120px 0 60px;
+            background: linear-gradient(145deg, #BE5212 0%, var(--primary-orange) 45%, var(--warm-gold) 85%, #E8B800 100%);
+            padding: 120px 0 90px;
             color: white;
             text-align: center;
             overflow: hidden;
@@ -24,316 +23,334 @@
             position: relative;
         }
 
+        /* Decorative blob circles via box-shadow */
         .page-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
-            opacity: 0.3;
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            top: -60px;
+            right: -80px;
+            pointer-events: none;
+            z-index: 0;
+            box-shadow: -580px 140px 0 280px rgba(255,255,255,0.045);
+        }
+
+        /* White diagonal cut at the bottom */
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 52px;
+            background: white;
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+            z-index: 2;
         }
 
         .page-title {
             font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
             font-weight: 800;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 4px 12px rgba(0,0,0,0.2);
             position: relative;
-            z-index: 1;
+            z-index: 3;
+            color: white;
         }
 
         .page-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            opacity: 0.95;
-            max-width: 600px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.92;
+            max-width: 560px;
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 3;
+            line-height: 1.65;
         }
 
-        /* Main Characters Section */
+        /* ── Main Hero Characters ────────────────────────────────── */
+
         .main-characters {
-            padding: 80px 0;
+            padding: 90px 0 100px;
             background: white;
         }
 
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
             margin-top: 3rem;
-            max-width: 1200px;
+            max-width: 960px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 1.5rem;
         }
 
+        /* Portrait-style hero cards — image on top, info below */
         .character-card {
-            background: linear-gradient(135deg, #FFF8DC 0%, #FFFFFF 100%);
-            border-radius: 20px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 0;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.11);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            background: white;
         }
 
         .character-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 28px 64px rgba(0,0,0,0.16);
         }
 
         .character-image {
-            background: linear-gradient(135deg, var(--primary-orange), var(--warm-gold));
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 340px;
             position: relative;
             overflow: hidden;
-            min-height: 250px;
+            flex-shrink: 0;
         }
 
-        .character-image::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -20%;
-            right: -20%;
-            bottom: -20%;
-            background-size: 150px;
-            background-position: 0 0;
-            background-repeat: repeat;
-            opacity: 0.2;
-            filter: blur(2px);
-        }
-
-        .character-card.archie .character-image::before {
-            background-image: url('imgs/characters/archie.png');
-        }
-
-        .character-card.bert .character-image::before {
-            background-image: url('imgs/characters/bert.png');
+        .character-card.archie .character-image {
+            background: linear-gradient(160deg, #FDDDB4 0%, #F4A460 100%);
         }
 
         .character-card.bert .character-image {
-            background: linear-gradient(135deg, var(--warm-gold), var(--deep-orange));
+            background: linear-gradient(160deg, #FFE999 0%, #DAA520 100%);
+        }
+
+        /* Large decorative character number */
+        .char-num {
+            position: absolute;
+            bottom: -20px; right: -8px;
+            font-family: var(--font-heading);
+            font-size: 9rem;
+            font-weight: 800;
+            line-height: 1;
+            color: rgba(255,255,255,0.15);
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
         }
 
         .character-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            object-position: center top;
+            transition: transform 0.4s ease;
             position: relative;
             z-index: 1;
         }
 
         .character-card:hover .character-image img {
-            transform: scale(1.05) rotate(2deg);
+            transform: scale(1.06);
         }
 
+        /* Info panel */
         .character-info {
-            padding: 2rem;
+            padding: 1.75rem 2rem 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            flex: 1;
         }
 
         .character-info h2 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
-            color: var(--primary-orange);
-            margin-bottom: 0.3rem;
+            font-size: 2.5rem;
             font-weight: 800;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.4rem;
+            line-height: 1.1;
         }
 
         .character-role {
-            color: var(--warm-gold);
+            display: inline-block;
+            font-size: 0.72rem;
             font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: white;
+            padding: 0.25rem 0.85rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
         }
+
+        .character-card.archie .character-role { background: var(--primary-orange); }
+        .character-card.bert .character-role   { background: var(--warm-gold); }
 
         .character-description {
             color: #555;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+            font-size: 0.97rem;
+            flex: 1;
         }
 
         .character-traits {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.45rem;
         }
 
         .trait {
-            background: white;
-            color: var(--primary-orange);
-            padding: 0.4rem 0.9rem;
+            padding: 0.3rem 0.85rem;
             border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 2px solid var(--primary-orange);
+            font-size: 0.8rem;
+            font-weight: 700;
         }
 
-        /* All Characters Section */
+        /* Archie — warm/adventure palette */
+        .character-card.archie .trait:nth-child(1) { background: #FFF0E0; color: #BF5500; }
+        .character-card.archie .trait:nth-child(2) { background: #E8F4FF; color: #1456A0; }
+        .character-card.archie .trait:nth-child(3) { background: #F3EAFF; color: #6A1B9A; }
+        .character-card.archie .trait:nth-child(4) { background: #E8FFF3; color: #1B5E20; }
+
+        /* Bert — wise/calm palette */
+        .character-card.bert .trait:nth-child(1) { background: #FFF8DC; color: #7A5700; }
+        .character-card.bert .trait:nth-child(2) { background: #FFEBEE; color: #B71C1C; }
+        .character-card.bert .trait:nth-child(3) { background: #E8FBFF; color: #006064; }
+        .character-card.bert .trait:nth-child(4) { background: #F3EAFF; color: #4A148C; }
+
+        /* ── Friends of the Savanna ─────────────────────────────── */
+
         .all-characters {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
+            padding: 90px 0 100px;
+            background: #FAFAF8;
+            position: relative;
+        }
+
+        .all-characters::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                var(--primary-orange), var(--warm-gold),
+                var(--deep-orange), var(--primary-orange));
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #777;
+            margin-top: -1.5rem;
+            margin-bottom: 3rem;
         }
 
         .characters-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            margin-top: 2.5rem;
         }
 
         .character-showcase-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid transparent;
         }
+
+        /* Individual accent colours */
+        .character-showcase-card:nth-child(1) { border-top-color: #E97B3A; }
+        .character-showcase-card:nth-child(2) { border-top-color: #C0860A; }
+        .character-showcase-card:nth-child(3) { border-top-color: #3D9E6B; }
+        .character-showcase-card:nth-child(4) { border-top-color: #D64077; }
+        .character-showcase-card:nth-child(5) { border-top-color: #5B7EC4; }
+        .character-showcase-card:nth-child(6) { border-top-color: #A055C0; }
 
         .character-showcase-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.13);
         }
 
         .character-showcase-image {
-            background: linear-gradient(135deg, var(--soft-cream), #FFF);
-            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 240px;
-            position: relative;
+            height: 200px;
             overflow: hidden;
         }
 
-        .character-showcase-image::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            right: -10%;
-            bottom: -10%;
-            background-size: 100px;
-            background-position: 0 0;
-            background-repeat: repeat;
-            opacity: 0.15;
-            filter: blur(1px);
-        }
-
-        .character-showcase-card:nth-child(1) .character-showcase-image::before {
-            background-image: url('imgs/characters/ted.png');
-        }
-
-        .character-showcase-card:nth-child(2) .character-showcase-image::before {
-            background-image: url('imgs/characters/samson.png');
-        }
-
-        .character-showcase-card:nth-child(3) .character-showcase-image::before {
-            background-image: url('imgs/characters/zuzu.png');
-        }
-
-        .character-showcase-card:nth-child(4) .character-showcase-image::before {
-            background-image: url('imgs/characters/saffron.png');
-        }
-
-        .character-showcase-card:nth-child(5) .character-showcase-image::before {
-            background-image: url('imgs/characters/tama.png');
-        }
-
-        .character-showcase-card:nth-child(6) .character-showcase-image::before {
-            background-image: url('imgs/characters/wendyandpenny.png');
-        }
+        /* Warm tints per card */
+        .character-showcase-card:nth-child(1) .character-showcase-image { background: #FFF5EF; }
+        .character-showcase-card:nth-child(2) .character-showcase-image { background: #FFFCEE; }
+        .character-showcase-card:nth-child(3) .character-showcase-image { background: #EEFAF3; }
+        .character-showcase-card:nth-child(4) .character-showcase-image { background: #FFF0F5; }
+        .character-showcase-card:nth-child(5) .character-showcase-image { background: #F0F4FF; }
+        .character-showcase-card:nth-child(6) .character-showcase-image { background: #F9F0FF; }
 
         .character-showcase-image img {
+            height: 86%;
             width: auto;
-            height: 100%;
-            max-width: 100%;
+            max-width: 90%;
             object-fit: contain;
-            object-position: center;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
-            padding: 1rem;
+            transition: transform 0.35s ease;
         }
 
         .character-showcase-card:hover .character-showcase-image img {
-            transform: scale(1.1);
+            transform: scale(1.1) translateY(-4px);
         }
 
         .character-showcase-info {
-            padding: 1.5rem;
-            text-align: center;
+            padding: 1.25rem 1.4rem 1.5rem;
         }
 
         .character-showcase-card h3 {
             font-family: var(--font-heading);
-            color: var(--primary-orange);
-            font-size: 1.4rem;
-            margin-bottom: 0.3rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.2rem;
         }
 
         .character-showcase-card .character-role {
-            color: var(--warm-gold);
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 0.7rem;
         }
 
         .character-showcase-card p {
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.88rem;
+            line-height: 1.55;
         }
 
-        /* Responsive Design */
-        @media (max-width: 968px) {
+        /* ── Responsive ─────────────────────────────────────────── */
+
+        @media (max-width: 900px) {
             .character-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .character-card {
-                grid-template-columns: 1fr;
+                max-width: 460px;
             }
 
             .character-image {
-                height: 250px;
+                height: 300px;
             }
 
-            .character-image img {
-                max-width: 200px;
-            }
-        }
-
-        @media (max-width: 768px) {
             .characters-showcase {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .characters-showcase {
                 grid-template-columns: 1fr;
             }
 
-            .character-showcase-image {
-                height: 180px;
+            .character-image {
+                height: 260px;
+            }
+
+            .char-num {
+                font-size: 6rem;
             }
         }
     </style>
@@ -342,7 +359,7 @@
 <body>
     <!-- Banner Placeholder -->
     <div id="banner-placeholder"></div>
-    
+
     <!-- Navigation Placeholder -->
     <div id="navbar-placeholder"></div>
 
@@ -350,7 +367,7 @@
     <section class="page-hero">
         <div class="container">
             <h1 class="page-title">Meet Our Characters</h1>
-            <p class="page-subtitle">Get to know the lovable characters who make every adventure special</p>
+            <p class="page-subtitle">Two unlikely friends. One incredible world. Get to know the characters behind every adventure.</p>
         </div>
     </section>
 
@@ -359,17 +376,19 @@
         <div class="container">
             <h2 class="section-title">Our Heroes</h2>
             <div class="character-grid">
+
                 <!-- Archie -->
                 <div class="character-card archie">
                     <div class="character-image">
                         <img src="imgs/characters/archie.png" alt="Archie the Jack Russell">
+                        <span class="char-num">01</span>
                     </div>
                     <div class="character-info">
                         <h2>Archie</h2>
-                        <p class="character-role">Jack Russell</p>
+                        <span class="character-role">Jack Russell Terrier</span>
                         <p class="character-description">
-                            Archie is a spirited and energetic Jack Russell with an insatiable appetite for adventure.
-                            His boundless energy and optimistic outlook often lead him and his best friend Bert
+                            Archie is a spirited, energetic Jack Russell with an insatiable appetite for adventure.
+                            His boundless optimism and fearless curiosity often lead him — and his best friend Bert —
                             into exciting (and sometimes chaotic) situations across the African savanna.
                         </p>
                         <div class="character-traits">
@@ -385,14 +404,15 @@
                 <div class="character-card bert">
                     <div class="character-image">
                         <img src="imgs/characters/bert.png" alt="Bert the Hippo">
+                        <span class="char-num">02</span>
                     </div>
                     <div class="character-info">
                         <h2>Bert</h2>
-                        <p class="character-role">Hippo</p>
+                        <span class="character-role">Hippopotamus</span>
                         <p class="character-description">
-                            Bert is a thoughtful and gentle hippo who serves as the voice of reason in their
-                            friendship. While he may be more cautious than Archie, his wisdom and big heart
-                            always help them find their way through any challenge.
+                            Bert is a thoughtful, gentle hippo and the steady voice of reason in their friendship.
+                            Though more cautious than Archie, his warmth, wisdom, and big heart always help
+                            the two of them find their way through any challenge they face together.
                         </p>
                         <div class="character-traits">
                             <span class="trait">Wise</span>
@@ -402,6 +422,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -410,8 +431,9 @@
     <section class="all-characters">
         <div class="container">
             <h2 class="section-title">Friends of the Savanna</h2>
-            <p class="section-subtitle">Meet all the wonderful characters from Archie & Bert's world</p>
+            <p class="section-subtitle">Meet all the wonderful characters from Archie &amp; Bert's world</p>
             <div class="characters-showcase">
+
                 <!-- Ted -->
                 <div class="character-showcase-card">
                     <div class="character-showcase-image">
@@ -420,8 +442,7 @@
                     <div class="character-showcase-info">
                         <h3>Ted</h3>
                         <p class="character-role">Aardvark</p>
-                        <p>A thoughtful and caring aardvark who always looks out for the wellbeing of others with his gentle
-                            nature.</p>
+                        <p>A thoughtful and caring aardvark who always looks out for the wellbeing of others with his gentle nature.</p>
                     </div>
                 </div>
 
@@ -433,8 +454,7 @@
                     <div class="character-showcase-info">
                         <h3>Samson</h3>
                         <p class="character-role">Lion</p>
-                        <p>Strong and dependable, Samson the lion is always ready to lend a helping hand to his friends with
-                            his brave heart.</p>
+                        <p>Strong and dependable, Samson is always ready to lend a helping hand with his brave, warm heart.</p>
                     </div>
                 </div>
 
@@ -446,8 +466,7 @@
                     <div class="character-showcase-info">
                         <h3>Zuzu</h3>
                         <p class="character-role">Monkey</p>
-                        <p>A spirited and adventurous monkey who loves exploring new places, swinging through trees, and
-                            making friends.</p>
+                        <p>A spirited monkey who loves exploring new places, swinging through trees, and making friends wherever she goes.</p>
                     </div>
                 </div>
 
@@ -459,21 +478,19 @@
                     <div class="character-showcase-info">
                         <h3>Saffron</h3>
                         <p class="character-role">Flamingo</p>
-                        <p>A graceful and elegant flamingo who brings beauty and wisdom to every adventure with her vibrant
-                            spirit.</p>
+                        <p>A graceful flamingo who brings beauty and wisdom to every adventure with her vibrant spirit.</p>
                     </div>
                 </div>
 
-                <!-- Tama and Young Elephants -->
+                <!-- Tama -->
                 <div class="character-showcase-card">
                     <div class="character-showcase-image">
                         <img src="imgs/characters/tama.png" alt="Tama and Young Elephants">
                     </div>
                     <div class="character-showcase-info">
-                        <h3>Tama & Young Elephants</h3>
+                        <h3>Tama &amp; Young Elephants</h3>
                         <p class="character-role">Elephants</p>
-                        <p>Tama and two playful young elephants who love games and bringing joy to others with their gentle
-                            giant hearts.</p>
+                        <p>Tama and two playful young elephants who love games and bringing joy to everyone around them.</p>
                     </div>
                 </div>
 
@@ -483,12 +500,12 @@
                         <img src="imgs/characters/wendyandpenny.png" alt="Wendy and Penny the Giraffes">
                     </div>
                     <div class="character-showcase-info">
-                        <h3>Wendy & Penny</h3>
+                        <h3>Wendy &amp; Penny</h3>
                         <p class="character-role">Giraffes</p>
-                        <p>An inseparable duo of giraffes who work together to solve problems and spread happiness from
-                            their tall perspective.</p>
+                        <p>An inseparable giraffe duo who solve problems together and spread happiness from their tall perspective.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

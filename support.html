@@ -12,12 +12,46 @@
     <style>
         /* Support Page Custom Styles */
         .page-hero {
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 100%);
-            padding: 120px 0 60px;
+            background: linear-gradient(145deg, #C85F15 0%, var(--primary-orange) 45%, var(--warm-gold) 100%);
+            padding: 120px 0 90px;
             color: white;
             text-align: center;
             overflow: hidden;
             transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        /* Decorative blob circles */
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            top: -130px;
+            right: -90px;
+            pointer-events: none;
+            z-index: 0;
+            box-shadow:
+                -520px 60px 0 270px rgba(255,255,255,0.04),
+                -160px 200px 0 130px rgba(255,255,255,0.035);
+        }
+
+        /* White diagonal cut at the bottom */
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 52px;
+            background: white;
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+            z-index: 2;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 3;
         }
 
         .page-title {
@@ -25,12 +59,12 @@
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 4px 12px rgba(0,0,0,0.25);
         }
 
         .page-subtitle {
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            opacity: 0.95;
+            opacity: 0.92;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -170,50 +204,45 @@
     <section class="page-hero">
         <div class="container">
             <h1 class="page-title">Support Our Mission</h1>
-            <p class="page-subtitle">Help us create more adventures and make a positive impact</p>
+            <p class="page-subtitle">Every book you buy helps make a real difference — for people and animals in need</p>
         </div>
     </section>
 
-    <!-- Support Options -->
+    <!-- Charity Info -->
     <section class="support-options">
         <div class="container">
+
+            <!-- Tormohun info callout -->
+            <div style="background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%); border-radius: 20px; padding: 3rem; margin-bottom: 3rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid var(--primary-orange);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🏡</div>
+                <h2 style="font-family: var(--font-heading); color: var(--primary-orange); font-size: 2rem; margin-bottom: 1rem;">Every Penny Goes to Charity</h2>
+                <p style="font-size: 1.15rem; line-height: 1.8; color: #555; max-width: 750px; margin: 0 auto 1rem;">
+                    While we do charge for our books, every penny of profit is donated directly to <strong style="color: var(--warm-gold);">Tormohun Rotary Club</strong> — based in Torquay, Devon, UK.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 700px; margin: 0 auto 0.5rem;">
+                    They work tirelessly to support both people and animals in need — locally and beyond. We are proud to support their incredible work.
+                </p>
+            </div>
+
             <div class="support-grid">
                 <div class="support-card primary">
                     <h3>Buy Our Books</h3>
-                    <p>The best way to support us is by purchasing our books. Every sale directly funds new adventures and our charitable initiatives.</p>
-                    <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary">Shop on Amazon</a>
+                    <p>The best way to support us — and Tormohun Rotary Club — is by purchasing our books on Amazon. 100% of book profit goes directly to charity.</p>
+                    <a href="books.html" class="btn btn-primary">See All Books</a>
                 </div>
-                
+
                 <div class="support-card">
-                    <h3>Share Our Story</h3>
-                    <p>Help us reach more families by sharing our books with friends, family, and on social media.</p>
+                    <h3>Spread the Word</h3>
+                    <p>Help us reach more families by sharing our books and Fun School with friends, family, and on social media. Every share helps!</p>
                     <button class="btn btn-outline" onclick="shareWebsite()">Share Website</button>
                 </div>
-                
+
                 <div class="support-card">
-                    <h3>Direct Donation</h3>
-                    <p>Make a direct contribution to support literacy programs and wildlife conservation efforts.</p>
-                    <button class="btn btn-outline">Coming Soon</button>
+                    <h3>Fun School is Free</h3>
+                    <p>Our Fun School learning videos are completely free — no sign-up, no subscriptions, no fees. Share it with every child you know.</p>
+                    <a href="funschool.html" class="btn btn-outline">Visit Fun School</a>
                 </div>
             </div>
-            
-            <!--<div class="impact-tracker">
-                <h2>Our Impact So Far</h2>
-                <div class="impact-stats">
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Books Sold</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">£250+</div>
-                        <div class="stat-label">Donated to Literacy</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">£150+</div>
-                        <div class="stat-label">Wildlife Conservation</div>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </section>
 
@@ -222,5 +251,22 @@
 
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function shareWebsite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Archie & Bert Adventures',
+                    text: 'Check out Archie & Bert — brilliant children\'s books and free Fun School videos!',
+                    url: window.location.origin
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.origin).then(() => {
+                    alert('Website link copied to clipboard! Share it with your friends.');
+                }).catch(() => {
+                    alert('Visit archieandbert.com to find out more!');
+                });
+            }
+        }
+    </script>
 </body>
 </html>

@@ -12,12 +12,46 @@
     <style>
         /* About Page Custom Styles */
         .page-hero {
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 100%);
-            padding: 120px 0 60px;
+            background: linear-gradient(145deg, #A0440E 0%, var(--deep-orange) 30%, var(--primary-orange) 65%, var(--warm-gold) 100%);
+            padding: 120px 0 90px;
             color: white;
             text-align: center;
             overflow: hidden;
             transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        /* Decorative blob circles */
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.055);
+            top: -100px;
+            left: -70px;
+            pointer-events: none;
+            z-index: 0;
+            box-shadow:
+                560px 20px 0 260px rgba(255,255,255,0.04),
+                180px 220px 0 110px rgba(255,255,255,0.03);
+        }
+
+        /* White diagonal cut at the bottom */
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 52px;
+            background: white;
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+            z-index: 2;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 3;
         }
 
         .page-title {
@@ -25,12 +59,12 @@
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 4px 12px rgba(0,0,0,0.25);
         }
 
         .page-subtitle {
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            opacity: 0.95;
+            opacity: 0.92;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -160,8 +194,8 @@
     <!-- About Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1 class="page-title">About Our Mission</h1>
-            <p class="page-subtitle">Creating stories that matter, one adventure at a time</p>
+            <h1 class="page-title">About Archie &amp; Bert</h1>
+            <p class="page-subtitle">A story about stories — and what happens when you dare to share them</p>
         </div>
     </section>
 
@@ -171,16 +205,19 @@
             <div class="about-story">
                 <h2>Our Story</h2>
                 <p>
-                    Archie & Bert Adventures was born from a simple belief: every child deserves stories that 
-                    not only entertain but also inspire, educate, and build character. Our journey began with 
-                    the creation of two lovable characters who would become ambassadors for friendship, courage, 
-                    and the wonders of the natural world.
+                    When we began writing our first book, <em>"Archie &amp; Bert: Chaos in the Savanna,"</em> we had no idea how readers would respond. Since then, the ideas have kept coming — and so has the encouragement.
                 </p>
                 <p>
-                    Set against the beautiful backdrop of the African savanna, our stories celebrate diversity, 
-                    friendship, and the importance of working together to overcome challenges. Through Archie's 
-                    adventurous spirit and Bert's gentle wisdom, young readers learn valuable life lessons 
-                    while being transported to a world of wonder and excitement.
+                    What started as a simple story has grown into something much bigger, including the exciting idea of <strong>Fun School</strong> — free educational video content for every child, no subscriptions, no hidden fees.
+                </p>
+                <p>
+                    From the beginning, we've wanted to make something — or as much as possible — <strong>completely free</strong>. Accessible film and learning for everyone. We are now working alongside educational professionals to explore how far this journey can take us — together.
+                </p>
+                <p>
+                    While we do charge for our books, every penny of profit is donated to charity — specifically to <strong>Tormohun Rotary Club</strong>, based in Torquay, Devon, UK. They work tirelessly to support both people and animals in need, and we are proud to support their work.
+                </p>
+                <p>
+                    And we are only just getting started.
                 </p>
             </div>
 
@@ -189,18 +226,18 @@
                 <div class="impact-grid">
                     <div class="impact-card">
                         <div class="impact-icon">📚</div>
-                        <h3>Literacy Programs</h3>
-                        <p>25% of our profits support reading programs in underserved communities, helping ensure every child has access to quality books and literacy resources.</p>
+                        <h3>Our Books</h3>
+                        <p>Every penny of profit from our books is donated to Tormohun Rotary Club — helping fund vital community and animal welfare work in and around Torquay, Devon, UK.</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">🎓</div>
+                        <h3>Fun School</h3>
+                        <p>Free videos and learning content for all children — sports, maths, and more on the way. We believe education should be accessible to everyone, and we're working hard to make that a reality.</p>
                     </div>
                     <div class="impact-card">
                         <div class="impact-icon">🌍</div>
-                        <h3>Wildlife Conservation</h3>
-                        <p>15% of our profits go directly to African wildlife conservation efforts, protecting the real-life habitats that inspire our stories.</p>
-                    </div>
-                    <div class="impact-card">
-                        <div class="impact-icon">🎨</div>
-                        <h3>Arts Education</h3>
-                        <p>10% supports arts and creative writing programs, fostering the next generation of storytellers and artists.</p>
+                        <h3>Tormohun Rotary Club</h3>
+                        <p>Based in Torquay, Devon, UK, Tormohun Rotary Club supports people and animals in need both locally and beyond. Every book sale directly contributes to their tireless work.</p>
                     </div>
                 </div>
             </div>
