@@ -42,8 +42,8 @@
         .page-hero::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 52px;
+            bottom: -1px; left: 0; right: 0;
+            height: 54px;
             background: white;
             clip-path: polygon(0 100%, 100% 0, 100% 100%);
             z-index: 2;
@@ -261,6 +261,10 @@
         .character-showcase-card:nth-child(4) { border-top-color: #D64077; }
         .character-showcase-card:nth-child(5) { border-top-color: #5B7EC4; }
         .character-showcase-card:nth-child(6) { border-top-color: #A055C0; }
+        .character-showcase-card:nth-child(7) { border-top-color: #E84B8A; }
+        .character-showcase-card:nth-child(8) { border-top-color: #4A6FA5; }
+        .character-showcase-card:nth-child(9) { border-top-color: #7B9E3C; }
+        .character-showcase-card:nth-child(10) { border-top-color: #C05A28; }
 
         .character-showcase-card:hover {
             transform: translateY(-8px);
@@ -268,11 +272,9 @@
         }
 
         .character-showcase-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 200px;
+            height: 240px;
             overflow: hidden;
+            position: relative;
         }
 
         /* Warm tints per card */
@@ -282,17 +284,25 @@
         .character-showcase-card:nth-child(4) .character-showcase-image { background: #FFF0F5; }
         .character-showcase-card:nth-child(5) .character-showcase-image { background: #F0F4FF; }
         .character-showcase-card:nth-child(6) .character-showcase-image { background: #F9F0FF; }
+        .character-showcase-card:nth-child(7) .character-showcase-image { background: #FFF0F8; }
+        .character-showcase-card:nth-child(8) .character-showcase-image { background: #EEF2FA; }
+        .character-showcase-card:nth-child(9) .character-showcase-image { background: #F4FAE8; }
+        .character-showcase-card:nth-child(10) .character-showcase-image { background: #FFF3EE; }
 
         .character-showcase-image img {
-            height: 86%;
-            width: auto;
-            max-width: 90%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 28%;
             transition: transform 0.35s ease;
         }
 
         .character-showcase-card:hover .character-showcase-image img {
-            transform: scale(1.1) translateY(-4px);
+            transform: scale(1.06);
+        }
+
+        .character-showcase-card:nth-child(4) .character-showcase-image img {
+            object-position: center 15%;
         }
 
         .character-showcase-info {
@@ -333,6 +343,10 @@
 
             .character-image {
                 height: 300px;
+            }
+
+            .character-image img {
+                object-position: center 10%;
             }
 
             .characters-showcase {
@@ -503,6 +517,54 @@
                         <h3>Wendy &amp; Penny</h3>
                         <p class="character-role">Giraffes</p>
                         <p>An inseparable giraffe duo who solve problems together and spread happiness from their tall perspective.</p>
+                    </div>
+                </div>
+
+                <!-- Nellie -->
+                <div class="character-showcase-card">
+                    <div class="character-showcase-image">
+                        <img src="imgs/characters/nellie.png" alt="Nellie the Cockapoo">
+                    </div>
+                    <div class="character-showcase-info">
+                        <h3>Nellie</h3>
+                        <p class="character-role">Cockapoo</p>
+                        <p>Nellie belongs to one of the staff at the Tourist Lodge. Sweet, charming, and utterly loveable — Archie has quite a thing for her.</p>
+                    </div>
+                </div>
+
+                <!-- Aiko -->
+                <div class="character-showcase-card">
+                    <div class="character-showcase-image">
+                        <img src="imgs/characters/aiko.png" alt="Aiko the Bull Terrier">
+                    </div>
+                    <div class="character-showcase-info">
+                        <h3>Aiko</h3>
+                        <p class="character-role">Bull Terrier</p>
+                        <p>Brave and dependable, Aiko belongs to the manager of the Tourist Lodge. He keeps the animals at the river informed of any developments the humans have planned.</p>
+                    </div>
+                </div>
+
+                <!-- Kibo -->
+                <div class="character-showcase-card">
+                    <div class="character-showcase-image">
+                        <img src="imgs/characters/kibo.png" alt="Kibo the Tortoise">
+                    </div>
+                    <div class="character-showcase-info">
+                        <h3>Kibo</h3>
+                        <p class="character-role">Tortoise</p>
+                        <p>The wise old tortoise. Respected, clever, and never hasty — Kibo always looks after the camp when the others are away.</p>
+                    </div>
+                </div>
+
+                <!-- Percy -->
+                <div class="character-showcase-card">
+                    <div class="character-showcase-image">
+                        <img src="imgs/characters/percy.png" alt="Percy the Pangolin">
+                    </div>
+                    <div class="character-showcase-info">
+                        <h3>Percy</h3>
+                        <p class="character-role">Pangolin</p>
+                        <p>A gentle soul, often nervous and always considered. Percy loves his new life at the river and cherishes every one of his new friends.</p>
                     </div>
                 </div>
 

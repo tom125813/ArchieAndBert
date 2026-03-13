@@ -42,8 +42,8 @@
         .books-hero::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 52px;
+            bottom: -1px; left: 0; right: 0;
+            height: 54px;
             background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
             clip-path: polygon(0 100%, 100% 0, 100% 100%);
             z-index: 2;
@@ -188,6 +188,32 @@
             flex-wrap: wrap;
         }
 
+        /* Get Your Adventure Here block */
+        .buy-block {
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(244,164,96,0.2);
+        }
+
+        .buy-label {
+            margin-bottom: 1rem;
+        }
+
+        .buy-label strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--dark-charcoal);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .buy-label span {
+            font-size: 0.97rem;
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
         /* Series Info */
         .series-info {
             padding: 80px 0;
@@ -297,7 +323,7 @@
     <section class="books-hero">
         <div class="container">
             <h1>Our Book Collection</h1>
-            <p>Discover heartwarming adventures that teach friendship, courage, and the wonders of nature</p>
+            <p>Discover heartwarming adventures that teach friendship, courage, and the wonders of nature — eBooks from £2.99, also available in hardback</p>
         </div>
     </section>
 
@@ -321,10 +347,16 @@
                             <span class="feature-badge"><i class="fas fa-child"></i> Ages 3-8</span>
                             <span class="feature-badge"><i class="fas fa-star"></i> 5★ Rating</span>
                         </div>
-                        <div class="book-actions">
-                            <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Buy on Amazon
-                            </a>
+                        <div class="buy-block">
+                            <div class="buy-label">
+                                <strong>Get Your Adventure Here</strong>
+                                <span>eBook from £2.99 · Also available in Hardback</span>
+                            </div>
+                            <div class="book-actions">
+                                <a href="https://www.amazon.co.uk/Archie-Bert-Mr-Stephen-MORRIS/dp/B0G51VD5V4" target="_blank" class="btn btn-primary">
+                                    <i class="fab fa-amazon"></i> Buy on Amazon
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -347,10 +379,16 @@
                             <span class="feature-badge"><i class="fas fa-leaf"></i> Environmental Lessons</span>
                             <span class="feature-badge"><i class="fas fa-handshake"></i> New Friendships</span>
                         </div>
-                        <div class="book-actions">
-                            <a href="https://www.amazon.co.uk/ARCHIE-BERT-SAFARI-TOURIST-INVASION/dp/B0GDWR7R9T" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Buy on Amazon
-                            </a>
+                        <div class="buy-block">
+                            <div class="buy-label">
+                                <strong>Get Your Adventure Here</strong>
+                                <span>eBook from £2.99 · Also available in Hardback</span>
+                            </div>
+                            <div class="book-actions">
+                                <a href="https://www.amazon.co.uk/ARCHIE-BERT-SAFARI-TOURIST-INVASION/dp/B0GDWR7R9T" target="_blank" class="btn btn-primary">
+                                    <i class="fab fa-amazon"></i> Buy on Amazon
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -373,10 +411,16 @@
                             <span class="feature-badge"><i class="fas fa-heart"></i> Courage</span>
                             <span class="feature-badge"><i class="fas fa-globe"></i> Environmental</span>
                         </div>
-                        <div class="book-actions">
-                            <a href="https://amazon.com/ARCHIE-BERT-3-MEETING-HIPPOCAMPUS/dp/B0GMZFX73B" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Buy on Amazon
-                            </a>
+                        <div class="buy-block">
+                            <div class="buy-label">
+                                <strong>Get Your Adventure Here</strong>
+                                <span>eBook from £2.99 · Also available in Hardback</span>
+                            </div>
+                            <div class="book-actions">
+                                <a href="https://amazon.com/ARCHIE-BERT-3-MEETING-HIPPOCAMPUS/dp/B0GMZFX73B" target="_blank" class="btn btn-primary">
+                                    <i class="fab fa-amazon"></i> Buy on Amazon
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

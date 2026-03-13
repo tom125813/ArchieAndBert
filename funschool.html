@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Fun School Page Styles */
+        /* ── Hero ── */
         .page-hero {
             background: linear-gradient(145deg, #C85F15 0%, var(--primary-orange) 40%, var(--warm-gold) 80%, #E8B800 100%);
             padding: 120px 0 95px;
@@ -20,56 +20,42 @@
             transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
-
-        /* Decorative blob circles */
         .page-hero::before {
             content: '';
             position: absolute;
-            width: 450px;
-            height: 450px;
+            width: 450px; height: 450px;
             border-radius: 50%;
             background: rgba(255,255,255,0.07);
-            top: -140px;
-            right: -100px;
-            pointer-events: none;
-            z-index: 0;
-            box-shadow:
-                -540px 60px 0 290px rgba(255,255,255,0.045),
-                -200px 230px 0 140px rgba(255,255,255,0.04);
+            top: -140px; right: -100px;
+            pointer-events: none; z-index: 0;
+            box-shadow: -540px 60px 0 290px rgba(255,255,255,0.045), -200px 230px 0 140px rgba(255,255,255,0.04);
         }
-
-        /* White diagonal cut at the bottom */
         .page-hero::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 52px;
+            bottom: -1px; left: 0; right: 0;
+            height: 54px;
             background: white;
             clip-path: polygon(0 100%, 100% 0, 100% 100%);
             z-index: 2;
         }
-
         .page-title {
             font-family: var(--font-heading);
             font-size: clamp(2.8rem, 5vw, 4.2rem);
             font-weight: 800;
             margin-bottom: 1rem;
             text-shadow: 2px 4px 12px rgba(0,0,0,0.25);
-            position: relative;
-            z-index: 3;
+            position: relative; z-index: 3;
             color: white;
         }
-
         .page-subtitle {
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             opacity: 0.95;
             max-width: 700px;
             margin: 0 auto;
-            position: relative;
-            z-index: 3;
+            position: relative; z-index: 3;
             line-height: 1.6;
         }
-
         .free-badge {
             display: inline-flex;
             align-items: center;
@@ -83,336 +69,318 @@
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 3;
+            position: relative; z-index: 3;
             backdrop-filter: blur(10px);
         }
 
-        /* Mission Banner */
+        /* ── Mission Banner ── */
         .mission-banner {
             background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
             padding: 50px 0;
             border-bottom: 1px solid rgba(244, 164, 96, 0.15);
         }
-
-        .mission-banner .container {
-            max-width: 900px;
-            text-align: center;
-        }
-
+        .mission-banner .container { max-width: 860px; text-align: center; }
         .mission-banner h2 {
             font-family: var(--font-heading);
             font-size: 2rem;
             color: var(--primary-orange);
             margin-bottom: 1rem;
         }
-
         .mission-banner p {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
-
-        .mission-banner p:last-child {
-            margin-bottom: 0;
-        }
-
+        .mission-banner p:last-child { margin-bottom: 0; }
         .mission-banner em {
             color: var(--primary-orange);
             font-style: normal;
             font-weight: 600;
         }
 
-        /* Sports Day Section */
+        /* ── Sports Section ── */
         .sports-section {
-            padding: 80px 0;
+            padding: 80px 0 90px;
             background: white;
         }
-
-        .sports-section .section-title {
-            margin-bottom: 0.75rem;
-        }
-
+        .sports-section .section-title { margin-bottom: 0.6rem; }
         .section-intro {
             text-align: center;
-            font-size: 1.15rem;
-            color: #666;
-            max-width: 750px;
-            margin: 0 auto 3.5rem;
+            font-size: 1.05rem;
+            color: #777;
+            max-width: 600px;
+            margin: 0 auto 3rem;
             line-height: 1.7;
         }
 
-        /* Video Grid */
+        /* ── Video Grid ── */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
+        /* ── Video Card ── */
         .video-card {
-            background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.09);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
             cursor: pointer;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
         }
-
         .video-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 14px 40px rgba(0,0,0,0.14);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.15);
         }
 
-        .video-thumbnail {
+        /* Thumbnail – square-ish (4:3) */
+        .video-thumb {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 4 / 3;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .video-thumbnail-inner {
-            width: 100%;
-            height: 100%;
+        /* Sports Day: real YT thumbnail */
+        .thumb-yt {
+            background-image: url('https://img.youtube.com/vi/lruhXC6MMgU/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%; height: 100%;
+            transition: transform 0.35s ease;
+        }
+        .video-card:hover .thumb-yt { transform: scale(1.04); }
+
+        /* Gradient thumbs for coming soon */
+        .thumb-gradient {
+            width: 100%; height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-heading);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
+            flex-direction: column;
+            gap: 0.6rem;
+            transition: transform 0.35s ease;
         }
+        .video-card:hover .thumb-gradient { transform: scale(1.04); }
 
-        .video-card:hover .video-thumbnail-inner {
-            transform: scale(1.05);
-        }
+        .thumb-sack { background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); }
+        .thumb-tug  { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); }
+        .thumb-egg  { background: linear-gradient(135deg, #F7971E 0%, #FFD200 100%); }
 
-        .thumb-running  { background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%); }
-        .thumb-sack     { background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); }
-        .thumb-tug      { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); }
-        .thumb-egg      { background: linear-gradient(135deg, #F7971E 0%, #FFD200 100%); }
-
-        .thumb-icon {
-            font-size: 3.5rem;
-            margin-bottom: 0.75rem;
-            display: block;
+        .thumb-emoji {
+            font-size: 3.2rem;
+            line-height: 1;
             filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
         }
-
-        .thumb-title {
-            font-size: 1.3rem;
+        .thumb-label {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
             font-weight: 700;
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+            color: white;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.25);
         }
 
+        /* Play overlay */
         .play-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.25);
+            inset: 0;
+            background: rgba(0,0,0,0.22);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
+            transition: background 0.25s ease;
         }
+        .video-card:hover .play-overlay { background: rgba(0,0,0,0.38); }
 
-        .video-card:hover .play-overlay {
-            background: rgba(0,0,0,0.4);
-        }
-
-        .play-button {
-            width: 70px;
-            height: 70px;
-            background: rgba(255,255,255,0.92);
+        .play-btn {
+            width: 64px; height: 64px;
+            background: rgba(255,255,255,0.93);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
             color: var(--primary-orange);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+            transition: transform 0.25s ease, background 0.25s ease;
         }
-
-        .video-card:hover .play-button {
-            transform: scale(1.12);
+        .video-card:hover .play-btn {
+            transform: scale(1.1);
             background: white;
         }
 
-        .video-details {
-            padding: 1.5rem;
+        /* Coming Soon overlay */
+        .cs-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.38);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .video-details h3 {
-            font-family: var(--font-heading);
+        .cs-pill {
+            background: rgba(255,255,255,0.96);
             color: var(--primary-orange);
-            font-size: 1.35rem;
-            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
             font-weight: 700;
-        }
-
-        .video-details p {
-            color: #666;
             font-size: 0.95rem;
-            line-height: 1.55;
-            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
         }
 
-        .video-tag {
+        /* Card body */
+        .card-body {
+            padding: 1.25rem 1.4rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+        }
+        .card-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            margin: 0;
+        }
+        .card-body p {
+            font-size: 0.9rem;
+            color: #777;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .card-tag {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            background: var(--soft-cream);
-            color: var(--primary-orange);
-            padding: 0.35rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.82rem;
+            gap: 0.35rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            border: 1.5px solid var(--primary-orange);
+            color: var(--primary-orange);
+            background: var(--soft-cream);
+            border: 1.5px solid rgba(244,164,96,0.4);
+            padding: 0.28rem 0.75rem;
+            border-radius: 50px;
+            width: fit-content;
+            margin-top: auto;
+        }
+        .card-tag.tag-soon { color: #888; border-color: #ddd; background: #f6f6f6; }
+
+        /* Coming soon cards: slightly muted */
+        .video-card.cs-card {
+            cursor: default;
+        }
+        .video-card.cs-card:hover {
+            transform: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
         }
 
-        /* Coming Soon Section */
+        /* ── Maths Coming Soon Section ── */
         .coming-soon-section {
             padding: 70px 0;
             background: linear-gradient(135deg, var(--soft-cream) 0%, #FFF 100%);
         }
-
         .coming-soon-card {
             background: linear-gradient(135deg, var(--primary-orange) 0%, var(--warm-gold) 100%);
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 3.5rem;
             text-align: center;
             color: white;
-            max-width: 800px;
+            max-width: 780px;
             margin: 0 auto;
-            box-shadow: 0 10px 40px rgba(244, 164, 96, 0.35);
+            box-shadow: 0 10px 40px rgba(244,164,96,0.35);
         }
-
         .coming-soon-card .cs-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
             display: block;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
         }
-
         .coming-soon-card h2 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+            margin-bottom: 0.85rem;
         }
-
         .coming-soon-card p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.7;
             opacity: 0.95;
-            margin-bottom: 0.75rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 0.6rem;
+            max-width: 580px;
+            margin-left: auto; margin-right: auto;
         }
-
-        .coming-soon-card .pill-tags {
+        .pill-tags {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.75rem;
-            margin-top: 2rem;
+            gap: 0.65rem;
+            margin-top: 1.75rem;
         }
-
-        .coming-soon-card .pill {
-            background: rgba(255,255,255,0.2);
-            border: 1.5px solid rgba(255,255,255,0.45);
+        .pill {
+            background: rgba(255,255,255,0.18);
+            border: 1.5px solid rgba(255,255,255,0.4);
             color: white;
-            padding: 0.45rem 1.1rem;
+            padding: 0.4rem 1rem;
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             font-family: var(--font-heading);
-            backdrop-filter: blur(10px);
         }
 
-        /* Video Modal */
+        /* ── Video Modal ── */
         .video-modal {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
+            inset: 0;
+            background: rgba(0,0,0,0.93);
             z-index: 2000;
             padding: 2rem;
             box-sizing: border-box;
         }
-
         .video-modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .modal-content {
             position: relative;
             width: 100%;
             max-width: 1100px;
             aspect-ratio: 16/9;
             background: black;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 20px 80px rgba(0,0,0,0.6);
         }
-
         .modal-close {
             position: absolute;
-            top: -52px;
-            right: 0;
-            background: none;
-            border: none;
+            top: -50px; right: 0;
+            background: none; border: none;
             color: white;
-            font-size: 2.2rem;
+            font-size: 2rem;
             cursor: pointer;
             padding: 0.5rem;
             z-index: 2001;
-            opacity: 0.85;
+            opacity: 0.8;
             transition: opacity 0.2s ease;
         }
-
         .modal-close:hover { opacity: 1; }
+        .video-iframe { width: 100%; height: 100%; border: none; }
 
-        .video-iframe {
-            width: 100%; height: 100%;
-            border: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
             .video-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.25rem;
             }
-
-            .coming-soon-card {
-                padding: 2.5rem 1.75rem;
-            }
-
-            .coming-soon-card h2 {
-                font-size: 1.8rem;
-            }
-
-            .video-modal {
-                padding: 1rem;
-            }
-
-            .modal-close {
-                top: -44px;
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .video-details {
-                padding: 1.2rem;
-            }
+            .coming-soon-card { padding: 2.25rem 1.5rem; }
+            .coming-soon-card h2 { font-size: 1.75rem; }
+            .video-modal { padding: 1rem; }
+            .modal-close { top: -42px; font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -436,8 +404,8 @@
     <section class="mission-banner">
         <div class="container">
             <h2>Learning That's Truly Free</h2>
-            <p>We want everything in Fun School to be <em>absolutely free</em>. Here are four sports day videos to get you started — and soon we will be looking at producing easy and fun ways to look at <em>maths</em>.</p>
-            <p>One of our animal characters will be taking the class. If you miss anything at your real school, maybe you can find the answers here?</p>
+            <p>We want everything in Fun School to be <em>absolutely free</em>. Watch our Sports Day video to get you started — and more events are <em>coming soon</em>!</p>
+            <p>We are also working on fun, easy ways to explore <em>maths</em> with one of our animal characters. If you ever miss something at school, maybe you'll find the answers right here.</p>
         </div>
     </section>
 
@@ -445,88 +413,79 @@
     <section class="sports-section">
         <div class="container">
             <h2 class="section-title">Sports Day!</h2>
-            <p class="section-intro">Watch our four Sports Day events below. Click any video to watch it now — completely free.</p>
+            <p class="section-intro">Watch our Sports Day video below — completely free. More events are on the way!</p>
 
             <div class="video-grid">
-                <!-- Running Race -->
-                <div class="video-card" onclick="openVideo('dQw4w9WgXcQ', 'Running Race')">
-                    <div class="video-thumbnail">
-                        <div class="video-thumbnail-inner thumb-running">
-                            <div>
-                                <span class="thumb-icon">🏃</span>
-                                <div class="thumb-title">Running Race</div>
-                            </div>
-                        </div>
+
+                <!-- Sports Day – real video -->
+                <div class="video-card" onclick="openVideo('lruhXC6MMgU')">
+                    <div class="video-thumb">
+                        <div class="thumb-yt"></div>
                         <div class="play-overlay">
-                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
                         </div>
                     </div>
-                    <div class="video-details">
-                        <h3>Running Race</h3>
-                        <p>Ready, set, go! Watch our animal characters take on the classic running race. Who will cross the finish line first?</p>
-                        <span class="video-tag"><i class="fas fa-running"></i> Sports Day</span>
+                    <div class="card-body">
+                        <h3>Sports Day</h3>
+                        <p>Join Archie, Bert, and their friends for a fun-filled Sports Day full of races, teamwork, and excitement!</p>
+                        <span class="card-tag"><i class="fas fa-trophy"></i> Watch Now</span>
                     </div>
                 </div>
 
-                <!-- Sack Race -->
-                <div class="video-card" onclick="openVideo('dQw4w9WgXcQ', 'Sack Race')">
-                    <div class="video-thumbnail">
-                        <div class="video-thumbnail-inner thumb-sack">
-                            <div>
-                                <span class="thumb-icon">🥉</span>
-                                <div class="thumb-title">Sack Race</div>
-                            </div>
+                <!-- Sack Race – Coming Soon -->
+                <div class="video-card cs-card">
+                    <div class="video-thumb">
+                        <div class="thumb-gradient thumb-sack">
+                            <span class="thumb-emoji">🥉</span>
+                            <span class="thumb-label">Sack Race</span>
                         </div>
-                        <div class="play-overlay">
-                            <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="cs-overlay">
+                            <span class="cs-pill">Coming Soon</span>
                         </div>
                     </div>
-                    <div class="video-details">
+                    <div class="card-body">
                         <h3>Sack Race</h3>
-                        <p>Hop, hop, hop! The sack race is always full of laughs. Watch how our friends bounce their way to the finish!</p>
-                        <span class="video-tag"><i class="fas fa-laugh"></i> Sports Day</span>
+                        <p>Hop, hop, hop! The sack race is always full of laughs. Stay tuned for this one!</p>
+                        <span class="card-tag tag-soon"><i class="fas fa-clock"></i> Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Tug of War -->
-                <div class="video-card" onclick="openVideo('dQw4w9WgXcQ', 'Tug of War')">
-                    <div class="video-thumbnail">
-                        <div class="video-thumbnail-inner thumb-tug">
-                            <div>
-                                <span class="thumb-icon">💪</span>
-                                <div class="thumb-title">Tug of War</div>
-                            </div>
+                <!-- Tug of War – Coming Soon -->
+                <div class="video-card cs-card">
+                    <div class="video-thumb">
+                        <div class="thumb-gradient thumb-tug">
+                            <span class="thumb-emoji">💪</span>
+                            <span class="thumb-label">Tug of War</span>
                         </div>
-                        <div class="play-overlay">
-                            <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="cs-overlay">
+                            <span class="cs-pill">Coming Soon</span>
                         </div>
                     </div>
-                    <div class="video-details">
+                    <div class="card-body">
                         <h3>Tug of War</h3>
-                        <p>Teamwork is everything! Watch both teams pull with all their might in this classic game of strength and determination.</p>
-                        <span class="video-tag"><i class="fas fa-users"></i> Sports Day</span>
+                        <p>Teamwork is everything! This epic tug of war showdown is on its way. Watch this space!</p>
+                        <span class="card-tag tag-soon"><i class="fas fa-clock"></i> Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Egg and Spoon -->
-                <div class="video-card" onclick="openVideo('dQw4w9WgXcQ', 'Egg and Spoon Race')">
-                    <div class="video-thumbnail">
-                        <div class="video-thumbnail-inner thumb-egg">
-                            <div>
-                                <span class="thumb-icon">🥚</span>
-                                <div class="thumb-title">Egg &amp; Spoon</div>
-                            </div>
+                <!-- Egg and Spoon – Coming Soon -->
+                <div class="video-card cs-card">
+                    <div class="video-thumb">
+                        <div class="thumb-gradient thumb-egg">
+                            <span class="thumb-emoji">🥚</span>
+                            <span class="thumb-label">Egg &amp; Spoon</span>
                         </div>
-                        <div class="play-overlay">
-                            <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="cs-overlay">
+                            <span class="cs-pill">Coming Soon</span>
                         </div>
                     </div>
-                    <div class="video-details">
+                    <div class="card-body">
                         <h3>Egg &amp; Spoon Race</h3>
-                        <p>Steady does it! Balance is the key to this tricky race. Can our characters keep their egg on the spoon all the way to the end?</p>
-                        <span class="video-tag"><i class="fas fa-balance-scale"></i> Sports Day</span>
+                        <p>Steady does it! The egg and spoon race is coming very soon. Can our characters keep their balance?</p>
+                        <span class="card-tag tag-soon"><i class="fas fa-clock"></i> Coming Soon</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -537,7 +496,7 @@
             <div class="coming-soon-card">
                 <span class="cs-icon">🔢</span>
                 <h2>Maths is Coming!</h2>
-                <p>We are working on producing easy, fun ways to explore <strong>maths</strong> — and one of our very own animal characters will be taking the class!</p>
+                <p>We are working on fun, easy ways to explore <strong>maths</strong> — and one of our very own animal characters will be taking the class!</p>
                 <p>If you ever miss anything at your real school, maybe you'll find the answers right here. Watch this space!</p>
                 <div class="pill-tags">
                     <span class="pill"><i class="fas fa-star"></i> Completely Free</span>
@@ -563,10 +522,10 @@
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
     <script>
-        function openVideo(videoId, title) {
+        function openVideo(videoId) {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('videoIframe');
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0';
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -576,7 +535,7 @@
             const iframe = document.getElementById('videoIframe');
             iframe.src = '';
             modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         }
 
         document.getElementById('videoModal').addEventListener('click', function(e) {

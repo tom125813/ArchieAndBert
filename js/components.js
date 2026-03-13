@@ -54,6 +54,9 @@ const footerTemplate = `
                 <p>Adventures that inspire friendship, courage, and wonder in young hearts. Every penny of book profit is donated to <strong style="color: var(--warm-gold);">Tormohun Rotary Club</strong>.</p>
                 <div class="social-links">
                     <a href="mailto:hello@archieandbert.com" class="social-link" title="Email us"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/archieandbert" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@archieandbert" class="social-link" title="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@ArchieBert-y8y" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
